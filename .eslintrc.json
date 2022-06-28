@@ -17,6 +17,7 @@
   ],
   "rules": {
     "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/no-namespace": "off",
     "import/no-cycle": "off",
     "consistent-return": "off",
     "no-await-in-loop": "off",
