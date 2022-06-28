@@ -1,12 +1,13 @@
 import { model, Schema } from "mongoose";
-import { ModelsTypes } from "../types";
+import { UsersModelsTypes } from "../types";
 
 const MoodSchema: Schema = new Schema({
 	patient: { type: Schema.Types.ObjectId, ref: 'Patient' },
 	date: { type: Date },
 	mood: {
 		type: String,
-		default: 'normal'
+		enum: ['NORMAL', 'HAPPY', 'ANGRY', 'SAD'],
+		default: 'NORMAL'
 	},
 	createdAt: { type: Date, required: false, default: Date.now },
 	updatedAt: { type: Date, required: false }
@@ -20,5 +21,5 @@ MoodSchema.pre("save", function (next) {
 	next();
 });
 
-export default model<ModelsTypes.Mood>(
+export default model<UsersModelsTypes.Mood>(
 	"Mood", MoodSchema)

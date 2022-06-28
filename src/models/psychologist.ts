@@ -1,5 +1,5 @@
 import { model, Schema } from "mongoose";
-import { ModelsTypes } from "../types";
+import { UsersModelsTypes } from "../types";
 
 const PsychologistSchema: Schema = new Schema({
   name: { type: String, required: true },
@@ -29,5 +29,5 @@ PsychologistSchema.pre("save", function (next) {
   next();
 });
 
-export default model<ModelsTypes.Psychologist>(
+export default model<UsersModelsTypes.Psychologist>(
   "Psychologist", PsychologistSchema)

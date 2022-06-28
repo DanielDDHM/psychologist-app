@@ -1,5 +1,5 @@
 import { model, Schema } from "mongoose";
-import { ModelsTypes } from "../types";
+import { UsersModelsTypes } from "../types";
 
 const DiagnosisSchema: Schema = new Schema({
 	patient: { type: Schema.Types.ObjectId, ref: 'Patient' },
@@ -17,5 +17,5 @@ DiagnosisSchema.pre("save", function (next) {
 	next();
 });
 
-export default model<ModelsTypes.Diagnosis>(
+export default model<UsersModelsTypes.Diagnosis>(
 	"Diagnosis", DiagnosisSchema)

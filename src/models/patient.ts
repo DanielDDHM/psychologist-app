@@ -1,16 +1,16 @@
 // import bcrypt from 'bcrypt';
 import { model, Schema } from "mongoose";
-import { ModelsTypes } from "../types";
+import { UsersModelsTypes } from "../types";
 
 const PatientSchema: Schema = new Schema({
   name: { type: String, required: false },
   birthdate: { type: Date, required: false },
   email: {
     type: String,
+    required: true,
     lowercase: true,
     trim: true,
-    unique: true,
-    required: true
+    unique: true
   },
   password: { type: String, required: true },
   phone: { type: String, required: false },
@@ -29,5 +29,5 @@ PatientSchema.pre("save", function (next) {
   next();
 });
 
-export default model<ModelsTypes.Patient>(
+export default model<UsersModelsTypes.Patient>(
   "Patient", PatientSchema)
