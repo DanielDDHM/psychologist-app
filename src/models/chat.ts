@@ -1,5 +1,5 @@
 import { model, Schema } from "mongoose";
-import { CallModelsTypes } from "../types";
+import { CallModelsTypes } from "../types/models";
 
 const ChatSchema: Schema = new Schema({
 	patient: { type: Schema.Types.ObjectId, ref: 'Patient', required: true },

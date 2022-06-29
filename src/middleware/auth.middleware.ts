@@ -9,7 +9,7 @@ export namespace AuthMiddleware {
       console.log('UNDER MAINTENANCE')
       next();
     } catch (e: any) {
-      throw new AppError('', StatusCode.INTERNAL_SERVER_ERROR)
+      throw new AppError(e.message, StatusCode.INTERNAL_SERVER_ERROR)
     }
   }
 
@@ -18,7 +18,7 @@ export namespace AuthMiddleware {
       console.log('UNDER MAINTENANCE')
       next();
     } catch (e: any) {
-      throw new AppError('', StatusCode.INTERNAL_SERVER_ERROR)
+      throw new AppError(e.message, StatusCode.INTERNAL_SERVER_ERROR)
     }
   }
 }

@@ -1,5 +1,5 @@
 import { model, Schema } from "mongoose";
-import { UsersModelsTypes } from "../types";
+import { UsersModelsTypes } from "../types/models";
 
 const MoodSchema: Schema = new Schema({
 	patient: { type: Schema.Types.ObjectId, ref: 'Patient' },

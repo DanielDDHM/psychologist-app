@@ -1,0 +1,29 @@
+export enum DefaultMessages {
+  NOT_STAFF = 'YOURE NOT A STAFF',
+  NOT_PERMITED = 'YOU DONT HAVE PERMISSION FOR THIS',
+  INVALID_TOKEN = 'NO TOKEN PROVIDED',
+  MISSING_TOKEN = 'TOKEN IS MISSING',
+  CURIOSITY = 'I ATE THE ASS OF WHO\'S READING',
+  WRONG_DATA = 'WRONG DATA',
+  INTERNAL_SERVER_ERROR = "INTERNAL_SERVER_ERROR"
+}
+
+export enum CrudOperations {
+  GET = 'GET',
+  POST = 'POST',
+  PUT = 'PUT',
+  PATCH = 'PATCH',
+  DELETE = 'DELETE'
+}
+
+export enum UserTypes {
+  ADMIN = 'ADMIN',
+  USER = 'USER',
+  OWNER = 'OWNER'
+}
+
+export enum DefaultStatus {
+  CREATED = 'CREATED',
+  UPDATED = 'UPDATED',
+  DELETED = 'DELETED',
+}

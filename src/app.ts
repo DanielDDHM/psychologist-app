@@ -3,6 +3,7 @@ import express, { Request, Response } from 'express';
 import "express-async-errors";
 import 'dotenv/config';
 import mongoose from 'mongoose';
+import routes from './routes';
 const { PORT, DATABASE_URL } = process.env
 
 //APP
@@ -13,6 +14,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
+app.use('/v1', routes)
 // one call for test
 app.get('/', (req: Request, res: Response) => {
   return res.send({ status: 'UP' });

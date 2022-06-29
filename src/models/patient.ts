@@ -1,6 +1,6 @@
 // import bcrypt from 'bcrypt';
 import { model, Schema } from "mongoose";
-import { UsersModelsTypes } from "../types";
+import { UsersModelsTypes } from "../types/models";
 
 const PatientSchema: Schema = new Schema({
   name: { type: String, required: false },
