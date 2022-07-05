@@ -3,18 +3,7 @@ import { model, Schema } from "mongoose";
 import { UsersModelsTypes } from "../types/models";
 
 const PatientSchema: Schema = new Schema({
-  name: { type: String, required: false },
-  birthdate: { type: Date, required: false },
-  email: {
-    type: String,
-    required: true,
-    lowercase: true,
-    trim: true,
-    unique: true
-  },
-  password: { type: String, required: true },
-  phone: { type: String, required: false },
-  photo: { type: String, required: false },
+  user: { type: Schema.Types.ObjectId, ref: 'User' },
   psychologist: {
     type: Schema.Types.ObjectId,
     ref: 'Psychologist'

@@ -1,9 +1,11 @@
 export namespace DefaultTypes {
-  export interface users {
+  export interface users extends register {
     name: string,
     email: string,
     password: string,
     photo: string,
+    role: string,
+    birthdate: string,
     isActive: boolean,
     isConfirmed: boolean
   }

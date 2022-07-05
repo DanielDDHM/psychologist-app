@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import { StatusCode } from "../constants/statuscode.typings";
+import { StatusCode } from "../constants";
 import AppError from "../helpers/apperror.exception";
 
 export namespace AuthMiddleware {

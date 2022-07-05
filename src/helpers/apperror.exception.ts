@@ -1,9 +1,6 @@
-export default class AppError {
-  message: string;
-  statusCode: number;
-
-  constructor(message: string, statusCode: number) {
-    this.message = message;
-    this.statusCode = statusCode;
+import { response } from "express";
+export namespace Exception {
+  export const AppError = async (statusCode: number, message: string) => {
+    return response.status(statusCode).send(message)
   }
 }
