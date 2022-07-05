@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import { StatusCode } from "../constants";
-import AppError from "../helpers/apperror.exception";
+import { Exception } from "../helpers";
 
 export namespace AuthMiddleware {
 
@@ -9,7 +9,7 @@ export namespace AuthMiddleware {
       console.log('UNDER MAINTENANCE')
       next();
     } catch (e: any) {
-      throw new AppError(e.message, StatusCode.INTERNAL_SERVER_ERROR)
+      Exception.Response(StatusCode.INTERNAL_SERVER_ERROR, e)
     }
   }
 
@@ -18,7 +18,7 @@ export namespace AuthMiddleware {
       console.log('UNDER MAINTENANCE')
       next();
     } catch (e: any) {
-      throw new AppError(e.message, StatusCode.INTERNAL_SERVER_ERROR)
+      Exception.Response(StatusCode.INTERNAL_SERVER_ERROR, e)
     }
   }
 }
