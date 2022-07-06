@@ -7,12 +7,16 @@ export namespace Password {
       const encryptPass = await bcrypt.hash(pass, salt)
 
       if (!encryptPass) {
-        Exception.AppError(StatusCode.FAILED_DEPENDENCY, Messages.Auth.CRYPT_PASS_FAIL)
+        throw new Exception.AppError(
+          StatusCode.FAILED_DEPENDENCY,
+          [Messages.Auth.CRYPT_PASS_FAIL])
       }
 
       return encryptPass
     } catch (error) {
-      Exception.Response(StatusCode.FAILED_DEPENDENCY, Messages.Auth.CRYPT_PASS_FAIL)
+      throw new Exception.AppError(
+        StatusCode.FAILED_DEPENDENCY,
+        [Messages.Auth.CRYPT_PASS_FAIL])
     }
   }
 
@@ -21,12 +25,15 @@ export namespace Password {
       const comparePass = await bcrypt.compare(pass, userPass)
 
       if (!comparePass) {
-        Exception.AppError(StatusCode.BAD_REQUEST, Messages.Auth.CRYPT_PASS_FAIL)
+        throw new Exception.AppError(StatusCode.BAD_REQUEST,
+          [Messages.Auth.CRYPT_PASS_FAIL])
       }
 
       return comparePass
     } catch (error: any) {
-      Exception.Response(StatusCode.INTERNAL_SERVER_ERROR, error.message)
+      throw new Exception.AppError(
+        StatusCode.INTERNAL_SERVER_ERROR,
+        error.message)
     }
   }
 }

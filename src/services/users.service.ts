@@ -23,14 +23,14 @@ export namespace UsersService {
       )
 
       if (!users) {
-        new Exception.AppError(
+        throw new Exception.AppError(
           StatusCode.NOT_FOUND,
           [Messages.StatusMessage.NOT_FOUND])
       }
 
       return users
     } catch (e: any) {
-      new Exception.AppError(
+      throw new Exception.AppError(
         StatusCode.INTERNAL_SERVER_ERROR,
         [Messages.StatusMessage.INTERNAL_SERVER_ERROR])
     }
@@ -52,7 +52,7 @@ export namespace UsersService {
       const emailExist = await User.find({ email })
 
       if (emailExist && emailExist !== []) {
-        new Exception.AppError(StatusCode.BAD_REQUEST, [Messages.User.USER_EXIST])
+        throw new Exception.AppError(StatusCode.BAD_REQUEST, [Messages.User.USER_EXIST])
       }
       const userCreated = await User.create({
         name,
@@ -65,11 +65,11 @@ export namespace UsersService {
         address
       })
       if (!userCreated) {
-        new Exception.AppError(StatusCode.BAD_REQUEST, userCreated)
+        throw new Exception.AppError(StatusCode.BAD_REQUEST, userCreated)
       }
       return userCreated
     } catch (error: any) {
-      new Exception.AppError(StatusCode.INTERNAL_SERVER_ERROR, error)
+      throw new Exception.AppError(StatusCode.INTERNAL_SERVER_ERROR, error)
     }
   }
 }

@@ -9,12 +9,12 @@ export namespace AuthService {
     const { email, password } = payload
 
     const user = await User.findOne({ email })
-    if (!user) Exception.Response(StatusCode.NOT_FOUND, Messages.Auth.MISSING_TOKEN);
+    if (!user) throw new Exception.AppError(StatusCode.NOT_FOUND, [Messages.Auth.MISSING_TOKEN]);
 
     const passMatch = await Password.compare(password, user?.password!)
 
     if (!passMatch || user?.email !== email) {
-      Exception.Response(StatusCode.BAD_REQUEST, Messages.Auth.NOT_PERMITED)
+      throw new Exception.AppError(StatusCode.BAD_REQUEST, [Messages.Auth.NOT_PERMITED])
     }
 
     const token = jwt.sign(email, String(process.env.AUTH_SECRET), { expiresIn: '1h' })
@@ -27,7 +27,9 @@ export namespace AuthService {
       console.log(token)
       return { auth: false, token: null };
     } catch (error: any) {
-      Exception.Response(StatusCode.INTERNAL_SERVER_ERROR, Messages.StatusMessage.INTERNAL_SERVER_ERROR)
+      throw new Exception.AppError(
+        StatusCode.INTERNAL_SERVER_ERROR,
+        [Messages.StatusMessage.INTERNAL_SERVER_ERROR])
     }
   }
 }
