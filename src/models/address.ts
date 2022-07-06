@@ -1,5 +1,5 @@
 import { model, Schema } from "mongoose";
-import { AddressModels } from "../types/models";
+import { DefaultModelsTypes } from "../types/models";
 
 const AddressSchema: Schema = new Schema({
   zipCode: { type: String },
@@ -19,5 +19,5 @@ AddressSchema.pre("save", function (next) {
   next();
 });
 
-export default model<AddressModels.create>(
+export default model<DefaultModelsTypes.Address>(
   "Address", AddressSchema)

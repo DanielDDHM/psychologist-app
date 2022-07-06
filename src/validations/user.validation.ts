@@ -1,10 +1,7 @@
 import { z } from "zod";
 
-export const get = z.object({
+export const getUserValidation = z.object({
   id: z.string()
-    .optional(),
-  email: z.string()
-    .min(2, { message: 'NON_EMPTY' })
     .optional(),
   page: z.number()
     .nonnegative()
@@ -14,7 +11,7 @@ export const get = z.object({
     .optional()
 })
 
-export const create = z.object({
+export const createUserValidation = z.object({
   id: z.string()
     .optional(),
   email: z.string()
