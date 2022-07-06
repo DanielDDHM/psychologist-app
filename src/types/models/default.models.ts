@@ -1,4 +1,4 @@
-export namespace DefaultTypes {
+export namespace DefaultModelsTypes {
   export interface users extends register {
     name: string,
     email: string,
@@ -15,7 +15,7 @@ export namespace DefaultTypes {
     updatedAt: Date
   }
 
-  export interface CallDefault {
+  export interface CallDefault extends register {
     patient: string,
     psychologist: string,
     startDate: Date,
@@ -24,4 +24,18 @@ export namespace DefaultTypes {
     rating: number,
     finished: boolean,
   }
+
+  export interface LibraryDefault extends register {
+    category: string,
+    type: string,
+    image: string
+    video: string
+    audio: string
+    name: string
+    description: string
+    published: boolean
+    publishSchedule: boolean
+    publishScheduleDate: Date
+  }
+
 }

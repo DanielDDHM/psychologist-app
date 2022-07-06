@@ -27,7 +27,7 @@ export namespace AuthService {
       console.log(token)
       return { auth: false, token: null };
     } catch (error: any) {
-      Exception.Response(StatusCode.INTERNAL_SERVER_ERROR, Messages.Default.INTERNAL_SERVER_ERROR)
+      Exception.Response(StatusCode.INTERNAL_SERVER_ERROR, Messages.StatusMessage.INTERNAL_SERVER_ERROR)
     }
   }
 }

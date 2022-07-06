@@ -9,7 +9,7 @@ const ChatSchema: Schema = new Schema({
 	PsychologistAccepted: { type: Boolean, default: false },
 	PsychologistAcceptedDate: { type: Date },
 	messages: { type: Object },
-	Status: [{ type: Object }],
+	Status: { type: Object },
 	rating: { type: Number },
 	finished: { type: Boolean, default: false },
 	createdAt: { type: Date, required: false, default: Date.now },

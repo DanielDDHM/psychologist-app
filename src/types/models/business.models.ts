@@ -1,10 +1,11 @@
-import { DefaultTypes } from "./default.models";
+import { DefaultModelsTypes } from "./default.models";
 
 export namespace BusinessModelsTypes {
-  export interface Schedule extends DefaultTypes.register {
+  export interface Schedule extends DefaultModelsTypes.register {
     psychologist: string,
     patient: string,
-    date: Date,
+    start: number,
+    end: number,
     createdAt: Date,
     updatedAt: Date
   }

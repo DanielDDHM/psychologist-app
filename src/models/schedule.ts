@@ -4,7 +4,8 @@ import { BusinessModelsTypes } from "../types/models";
 const ScheduleSchema: Schema = new Schema({
 	psychologist: { type: Schema.Types.ObjectId, ref: 'Psychologist', required: true },
 	patient: { type: Schema.Types.ObjectId, ref: 'Patient', required: true },
-	date: { type: Date, required: true },
+	start: { type: Number, required: true },
+	end: { type: Number, required: true },
 	createdAt: { type: Date, required: false, default: Date.now },
 	updatedAt: { type: Date, required: false }
 });

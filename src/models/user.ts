@@ -1,5 +1,5 @@
 import { model, Schema } from "mongoose";
-import { DefaultTypes } from "../types/models";
+import { DefaultModelsTypes } from "../types/models";
 
 const UserSchema: Schema = new Schema({
   name: { type: String, required: true },
@@ -14,6 +14,7 @@ const UserSchema: Schema = new Schema({
   photo: { type: String, required: false },
   role: { type: String, required: true },
   birthdate: { type: Date, required: false },
+  address: { type: Schema.Types.ObjectId, ref: 'Address' },
   isActive: { type: String, required: false, default: true },
   isConfirmed: { type: String, required: false, default: false },
   createdAt: { type: Date, required: false, default: Date.now },
@@ -28,5 +29,5 @@ UserSchema.pre("save", function (next) {
   next();
 });
 
-export default model<DefaultTypes.users>(
+export default model<DefaultModelsTypes.users>(
   "User", UserSchema)
