@@ -10,6 +10,8 @@ export namespace DefaultModelsTypes {
     photo: string,
     role: string,
     birthdate: string,
+    phone: string,
+    address: Address,
     isActive: boolean,
     isConfirmed: boolean
   }
@@ -36,7 +38,7 @@ export namespace DefaultModelsTypes {
     publishScheduleDate: Date
   }
 
-  export interface Address extends register {
+  export interface Address {
     zipCode: string,
     streetNumber: number,
     street: string,

@@ -1,20 +1,14 @@
 import { Request, Response } from "express";
-import { Messages, StatusCode } from "../constants";
-import { Exception } from "../helpers";
+import { StatusCode } from "../constants";
 import { AuthService } from "../services/auth.service";
 export namespace AuthController {
   export const login = async (req: Request, res: Response) => {
     const { body } = req;
     try {
       const userLogin = await AuthService.login(body)
-
-      if (!userLogin) {
-        Exception.AppError(StatusCode.BAD_REQUEST, Messages.Auth.NOT_PERMITED)
-      }
-
-      return Exception.Response(StatusCode.OK, userLogin)
+      return res.status(StatusCode.OK).send(userLogin)
     } catch (error: any) {
-      Exception.Response(StatusCode.INTERNAL_SERVER_ERROR, error)
+      res.status(StatusCode.INTERNAL_SERVER_ERROR).send(error)
     }
   }
 
@@ -24,9 +18,9 @@ export namespace AuthController {
 
       const userLogout = await AuthService.logout(token);
 
-      return Exception.Response(StatusCode.OK, userLogout)
+      return res.status(StatusCode.OK).send(userLogout)
     } catch (error: any) {
-      Exception.Response(StatusCode.INTERNAL_SERVER_ERROR, error)
+      res.status(StatusCode.INTERNAL_SERVER_ERROR).send(error)
     }
   }
 }

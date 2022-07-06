@@ -6,7 +6,8 @@ export namespace Messages {
     MISSING_TOKEN = 'TOKEN IS MISSING',
   }
   export enum User {
-    NOT_FOUND = 'USER_NOT_FOUND'
+    NOT_FOUND = 'USER_NOT_FOUND',
+    USER_EXIST = 'USER_EXIST'
   }
   export enum StatusMessage {
     MISSING_PARAMS = "MISSING_PARAMS",

@@ -1,24 +1,27 @@
 import { Request, Response } from "express";
-import { Messages, StatusCode } from "../constants";
+import { StatusCode } from "../constants";
 import { Exception } from "../helpers";
+import { UsersService } from "../services/users.service";
 
 export namespace UserController {
   export const getUser = async (req: Request, res: Response) => {
     const { params: { id }, query } = req
     try {
-      if (!id) {
-        Exception.AppError(StatusCode.BAD_REQUEST, Messages.StatusMessage.MISSING_PARAMS)
-      }
-
-      const users = "CONSTRUCT"
-      return res.status(StatusCode.OK).send({ users, query })
+      const users = await UsersService.get({ id, ...query })
+      return res.status(StatusCode.OK).send(users)
     } catch (error: any) {
-      Exception.Response(StatusCode.INTERNAL_SERVER_ERROR, error)
+      res.status(StatusCode.INTERNAL_SERVER_ERROR).send(error)
     }
   }
 
-  export const createUser = async () => {
-    console.log('SOON')
+  export const createUser = async (req: Request, res: Response) => {
+    const { body } = req
+    try {
+      const users = await UsersService.create(body)
+      return res.status(StatusCode.OK).send(users)
+    } catch (error: any) {
+      res.status(StatusCode.INTERNAL_SERVER_ERROR).send(error)
+    }
   }
 
   export const updateUser = async () => {

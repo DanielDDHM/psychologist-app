@@ -7,7 +7,6 @@ import swaggerUi from 'swagger-ui-express';
 import express, { Request, Response } from 'express';
 const { PORT, DATABASE_URL } = process.env
 import { Documentation } from './docs/api';
-import migrate from "./models/migrate";
 //APP
 const app = express();
 
@@ -27,7 +26,6 @@ app.use("/api-docs",
 
 mongoose.connect(DATABASE_URL!)
   .then(() => {
-    mongoose.set("autoIndex", true);
     app.listen(PORT, () => {
       console.log(`APP DB: ${DATABASE_URL}`)
       console.log(`APP STARTED ON http://localhost:${PORT || 3000}`);
