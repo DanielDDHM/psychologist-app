@@ -1,12 +1,12 @@
 import { Messages, StatusCode } from "../constants";
 import { Exception } from "../helpers";
 import { User } from "../models";
-import { UsersTypes } from "../types";
+import { DefaultTypes, UsersTypes } from "../types";
 import {
   createUserValidation,
   getUserValidation,
   updateUserValidation,
-  userConfirmValidation
+  idValidation
 } from "../validations/user.validation";
 
 export namespace UsersService {
@@ -53,7 +53,6 @@ export namespace UsersService {
         photo,
         phone,
         birthdate,
-        role,
         address
       } = createUserValidation.parse(params)
 
@@ -67,7 +66,6 @@ export namespace UsersService {
         email,
         password,
         photo,
-        role,
         birthdate,
         phone,
         address
@@ -119,11 +117,11 @@ export namespace UsersService {
     }
   }
 
-  export const confirm = async (params: UsersTypes.confirm) => {
+  export const confirm = async (params: UsersTypes.idOnly) => {
     try {
       const {
         id,
-      } = userConfirmValidation.parse(params)
+      } = idValidation.parse(params)
 
       const userConfirm = await User.findByIdAndUpdate(
         { _id: id },
@@ -140,11 +138,11 @@ export namespace UsersService {
     }
   }
 
-  export const activate = async (params: UsersTypes.confirm) => {
+  export const activate = async (params: UsersTypes.idOnly) => {
     try {
       const {
         id,
-      } = userConfirmValidation.parse(params)
+      } = idValidation.parse(params)
       const user = await User.findById({ _id: id })
 
       const userActivate = await User.findByIdAndUpdate(
@@ -157,6 +155,42 @@ export namespace UsersService {
       }
 
       return userActivate
+    } catch (e: any) {
+      throw new Exception.AppError(StatusCode.INTERNAL_SERVER_ERROR, [e])
+    }
+  }
+
+  export const destroy = async (params: UsersTypes.idOnly) => {
+    try {
+      const {
+        id,
+      } = idValidation.parse(params)
+      const userDeleted = await User.findByIdAndDelete({ _id: id })
+
+      if (!userDeleted) {
+        throw new Exception.AppError(StatusCode.BAD_REQUEST, [Messages.User.NOT_FOUND])
+      }
+
+      return userDeleted._id
+    } catch (e: any) {
+      throw new Exception.AppError(StatusCode.INTERNAL_SERVER_ERROR, [e])
+    }
+  }
+  export const adminify = async (params: UsersTypes.idOnly) => {
+    try {
+      const {
+        id,
+      } = idValidation.parse(params)
+      const user = await User.findByIdAndUpdate(
+        { _id: id },
+        { $set: { role: DefaultTypes.UserTypes.ADMIN } },
+        { returnOriginal: false })
+
+      if (!user) {
+        throw new Exception.AppError(StatusCode.BAD_REQUEST, [Messages.User.NOT_FOUND])
+      }
+
+      return user
     } catch (e: any) {
       throw new Exception.AppError(StatusCode.INTERNAL_SERVER_ERROR, [e])
     }

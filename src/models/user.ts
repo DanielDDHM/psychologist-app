@@ -13,7 +13,7 @@ const UserSchema: Schema = new Schema({
   password: { type: String, required: true },
   phone: { type: String, required: false },
   photo: { type: String, required: false },
-  role: { type: String, required: true, default: 'USER' },
+  role: { type: String, required: true, default: 'VVNFUg==' },
   birthdate: { type: Date, required: false },
   address: {
     zipCode: { type: String },

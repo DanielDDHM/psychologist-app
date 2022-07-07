@@ -37,7 +37,7 @@ export namespace UserController {
   export const confirmUser = async (req: Request, res: Response) => {
     const { params: { id } } = req
     try {
-      const user = await UsersService.confirm({ id } as UsersTypes.confirm)
+      const user = await UsersService.confirm({ id } as UsersTypes.idOnly)
       return res.status(StatusCode.OK).send(user)
     } catch (error: any) {
       res.status(StatusCode.INTERNAL_SERVER_ERROR).send(error)
@@ -47,19 +47,31 @@ export namespace UserController {
   export const activateUser = async (req: Request, res: Response) => {
     const { params: { id } } = req
     try {
-      const user = await UsersService.activate({ id } as UsersTypes.confirm)
+      const user = await UsersService.activate({ id } as UsersTypes.idOnly)
       return res.status(StatusCode.OK).send(user)
     } catch (error: any) {
       res.status(StatusCode.INTERNAL_SERVER_ERROR).send(error)
     }
   }
 
-  export const deleteUser = async () => {
-    console.log('SOON')
+  export const deleteUser = async (req: Request, res: Response) => {
+    const { params: { id } } = req
+    try {
+      const user = await UsersService.destroy({ id } as UsersTypes.idOnly)
+      return res.status(StatusCode.OK).send(user)
+    } catch (error: any) {
+      res.status(StatusCode.INTERNAL_SERVER_ERROR).send(error)
+    }
   }
 
-  export const makeAdmin = () => {
-    console.log('SOON')
+  export const makeAdmin = async (req: Request, res: Response) => {
+    const { body } = req
+    try {
+      const user = await UsersService.adminify(body as UsersTypes.idOnly)
+      return res.status(StatusCode.OK).send(user)
+    } catch (error: any) {
+      res.status(StatusCode.INTERNAL_SERVER_ERROR).send(error)
+    }
   }
 
 }

@@ -27,9 +27,6 @@ export const createUserValidation = z.object({
   phone: z.string()
     .min(2, { message: 'NON_EMPTY' })
     .max(13, { message: 'MAX_LENGTH_13' }),
-  role: z.string()
-    .min(2, { message: 'MIN_LENGHT_3' })
-    .optional(),
   birthdate: z.string()
     .min(2, { message: 'MIN_LENGHT_3' })
     .optional(),
@@ -110,7 +107,7 @@ export const updateUserValidation = z.object({
   })
 })
 
-export const userConfirmValidation = z.object({
+export const idValidation = z.object({
   id: z.string()
     .min(2, { message: 'NON_EMPTY' })
     .optional(),
