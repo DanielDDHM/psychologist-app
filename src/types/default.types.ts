@@ -8,8 +8,12 @@ export namespace DefaultTypes {
   }
 
   export enum UserTypes {
-    ADMIN = 'ADMIN',
-    USER = 'USER',
-    OWNER = 'OWNER'
+    ADMIN = 'QURNSU4=',
+    USER = 'VVNFUg==',
+    OWNER = 'T1dORVI='
   }
+}
+
+export namespace DefaultRoles {
+
 }

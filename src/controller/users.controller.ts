@@ -24,19 +24,37 @@ export namespace UserController {
     }
   }
 
-  export const updateUser = async () => {
-    console.log('SOON')
+  export const updateUser = async (req: Request, res: Response) => {
+    const { params: { id }, body } = req
+    try {
+      const user = await UsersService.update({ id, ...body } as UsersTypes.update)
+      return res.status(StatusCode.OK).send(user)
+    } catch (error: any) {
+      res.status(StatusCode.INTERNAL_SERVER_ERROR).send(error)
+    }
+  }
+
+  export const confirmUser = async (req: Request, res: Response) => {
+    const { params: { id } } = req
+    try {
+      const user = await UsersService.confirm({ id } as UsersTypes.confirm)
+      return res.status(StatusCode.OK).send(user)
+    } catch (error: any) {
+      res.status(StatusCode.INTERNAL_SERVER_ERROR).send(error)
+    }
+  }
+
+  export const activateUser = async (req: Request, res: Response) => {
+    const { params: { id } } = req
+    try {
+      const user = await UsersService.activate({ id } as UsersTypes.confirm)
+      return res.status(StatusCode.OK).send(user)
+    } catch (error: any) {
+      res.status(StatusCode.INTERNAL_SERVER_ERROR).send(error)
+    }
   }
 
   export const deleteUser = async () => {
-    console.log('SOON')
-  }
-
-  export const activateUser = () => {
-    console.log('SOON')
-  }
-
-  export const confirmUser = () => {
     console.log('SOON')
   }
 

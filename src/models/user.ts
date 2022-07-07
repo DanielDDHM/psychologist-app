@@ -13,7 +13,7 @@ const UserSchema: Schema = new Schema({
   password: { type: String, required: true },
   phone: { type: String, required: false },
   photo: { type: String, required: false },
-  role: { type: String, required: false, default: 'USER' },
+  role: { type: String, required: true, default: 'USER' },
   birthdate: { type: Date, required: false },
   address: {
     zipCode: { type: String },
@@ -23,9 +23,10 @@ const UserSchema: Schema = new Schema({
     city: { type: String },
     state: { type: String },
     country: { type: String },
+    required: false
   },
-  isActive: { type: String, required: false, default: true },
-  isConfirmed: { type: String, required: false, default: false },
+  isActive: { type: Boolean, required: false, default: true },
+  isConfirmed: { type: Boolean, required: false, default: false },
   createdAt: { type: Date, required: false, default: Date.now },
   updatedAt: { type: Date, required: false }
 })
