@@ -30,17 +30,22 @@ export namespace UsersService {
         User.count()
       ])
 
-      if (!users) {
+      if (users) {
         throw new Exception.AppError(
-          StatusCode.NOT_FOUND,
+          StatusCode.BAD_REQUEST,
           [Messages.StatusMessage.NOT_FOUND])
       }
 
       return { users, total }
     } catch (e: any) {
+      if (e instanceof Exception.AppError) {
+        throw new Exception.AppError(
+          e?.statusCode,
+          e?.messages)
+      }
       throw new Exception.AppError(
         StatusCode.INTERNAL_SERVER_ERROR,
-        [e])
+        [e?.message])
     }
   }
 
@@ -75,7 +80,14 @@ export namespace UsersService {
       }
       return userCreated
     } catch (e: any) {
-      throw new Exception.AppError(StatusCode.INTERNAL_SERVER_ERROR, [e])
+      if (e instanceof Exception.AppError) {
+        throw new Exception.AppError(
+          e?.statusCode,
+          e?.messages)
+      }
+      throw new Exception.AppError(
+        StatusCode.INTERNAL_SERVER_ERROR,
+        [e?.message])
     }
   }
 
@@ -113,7 +125,14 @@ export namespace UsersService {
 
       return userUpdated
     } catch (e: any) {
-      throw new Exception.AppError(StatusCode.INTERNAL_SERVER_ERROR, [e])
+      if (e instanceof Exception.AppError) {
+        throw new Exception.AppError(
+          e?.statusCode,
+          e?.messages)
+      }
+      throw new Exception.AppError(
+        StatusCode.INTERNAL_SERVER_ERROR,
+        [e?.message])
     }
   }
 
@@ -134,7 +153,14 @@ export namespace UsersService {
 
       return userConfirm
     } catch (e: any) {
-      throw new Exception.AppError(StatusCode.INTERNAL_SERVER_ERROR, [e])
+      if (e instanceof Exception.AppError) {
+        throw new Exception.AppError(
+          e?.statusCode,
+          e?.messages)
+      }
+      throw new Exception.AppError(
+        StatusCode.INTERNAL_SERVER_ERROR,
+        [e?.message])
     }
   }
 
@@ -156,7 +182,14 @@ export namespace UsersService {
 
       return userActivate
     } catch (e: any) {
-      throw new Exception.AppError(StatusCode.INTERNAL_SERVER_ERROR, [e])
+      if (e instanceof Exception.AppError) {
+        throw new Exception.AppError(
+          e?.statusCode,
+          e?.messages)
+      }
+      throw new Exception.AppError(
+        StatusCode.INTERNAL_SERVER_ERROR,
+        [e?.message])
     }
   }
 
@@ -173,7 +206,14 @@ export namespace UsersService {
 
       return userDeleted._id
     } catch (e: any) {
-      throw new Exception.AppError(StatusCode.INTERNAL_SERVER_ERROR, [e])
+      if (e instanceof Exception.AppError) {
+        throw new Exception.AppError(
+          e?.statusCode,
+          e?.messages)
+      }
+      throw new Exception.AppError(
+        StatusCode.INTERNAL_SERVER_ERROR,
+        [e?.message])
     }
   }
   export const adminify = async (params: UsersTypes.idOnly) => {
@@ -192,7 +232,14 @@ export namespace UsersService {
 
       return user
     } catch (e: any) {
-      throw new Exception.AppError(StatusCode.INTERNAL_SERVER_ERROR, [e])
+      if (e instanceof Exception.AppError) {
+        throw new Exception.AppError(
+          e?.statusCode,
+          e?.messages)
+      }
+      throw new Exception.AppError(
+        StatusCode.INTERNAL_SERVER_ERROR,
+        [e?.message])
     }
   }
 }

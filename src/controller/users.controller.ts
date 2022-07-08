@@ -10,7 +10,7 @@ export namespace UserController {
       const users = await UsersService.get({ id, ...query } as UsersTypes.get)
       return res.status(StatusCode.OK).send(users)
     } catch (error: any) {
-      res.status(StatusCode.INTERNAL_SERVER_ERROR).send(error)
+      res.status(error?.statusCode).send(error?.messages)
     }
   }
 
@@ -20,7 +20,7 @@ export namespace UserController {
       const users = await UsersService.create(body as UsersTypes.create)
       return res.status(StatusCode.OK).send(users)
     } catch (error: any) {
-      res.status(StatusCode.INTERNAL_SERVER_ERROR).send(error)
+      res.status(error?.statusCode).send(error?.messages)
     }
   }
 
@@ -30,7 +30,7 @@ export namespace UserController {
       const user = await UsersService.update({ id, ...body } as UsersTypes.update)
       return res.status(StatusCode.OK).send(user)
     } catch (error: any) {
-      res.status(StatusCode.INTERNAL_SERVER_ERROR).send(error)
+      res.status(error?.statusCode).send(error?.messages)
     }
   }
 
@@ -40,7 +40,7 @@ export namespace UserController {
       const user = await UsersService.confirm({ id } as UsersTypes.idOnly)
       return res.status(StatusCode.OK).send(user)
     } catch (error: any) {
-      res.status(StatusCode.INTERNAL_SERVER_ERROR).send(error)
+      res.status(error?.statusCode).send(error?.messages)
     }
   }
 
@@ -50,7 +50,7 @@ export namespace UserController {
       const user = await UsersService.activate({ id } as UsersTypes.idOnly)
       return res.status(StatusCode.OK).send(user)
     } catch (error: any) {
-      res.status(StatusCode.INTERNAL_SERVER_ERROR).send(error)
+      res.status(error?.statusCode).send(error?.messages)
     }
   }
 
@@ -60,7 +60,7 @@ export namespace UserController {
       const user = await UsersService.destroy({ id } as UsersTypes.idOnly)
       return res.status(StatusCode.OK).send(user)
     } catch (error: any) {
-      res.status(StatusCode.INTERNAL_SERVER_ERROR).send(error)
+      res.status(error?.statusCode).send(error?.messages)
     }
   }
 
@@ -70,7 +70,7 @@ export namespace UserController {
       const user = await UsersService.adminify(body as UsersTypes.idOnly)
       return res.status(StatusCode.OK).send(user)
     } catch (error: any) {
-      res.status(StatusCode.INTERNAL_SERVER_ERROR).send(error)
+      res.status(error?.statusCode).send(error?.messages)
     }
   }
 
