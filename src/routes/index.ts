@@ -5,7 +5,9 @@ import callRoutes from './call.routes'
 import chatRoutes from './chat.route'
 import consultRoutes from './consults.route'
 import diagnosticRoutes from './diagnostics.route'
-import usersRoutes from './users.routes'
+import usersRoutes from './users.route'
+import psyRoutes from './psychologist.route'
+import patRoutes from './patient.route'
 
 const routes = Router();
 
@@ -16,5 +18,7 @@ routes
   .use('/consult', consultRoutes)
   .use('/diagnostics', diagnosticRoutes)
   .use('/users', usersRoutes)
+  .use('/psy', psyRoutes)
+  .use('/patient', patRoutes)
 
 export default routes

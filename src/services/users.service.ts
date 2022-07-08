@@ -79,10 +79,13 @@ export namespace UsersService {
         phone,
         address
       })
+
       if (!userCreated) {
         throw new Exception.AppError(StatusCode.BAD_REQUEST, userCreated)
       }
+
       return userCreated
+
     } catch (e: any) {
       if (e instanceof Exception.AppError) {
         throw new Exception.AppError(
