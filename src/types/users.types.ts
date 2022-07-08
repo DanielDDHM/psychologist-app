@@ -4,7 +4,7 @@ import {
   getUserValidation,
   updateUserValidation,
   idValidation
-} from "../validations/user.validation"
+} from "../validations"
 
 export namespace UsersTypes {
   export type get = z.infer<typeof getUserValidation>

@@ -1,16 +1,50 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "module": "commonjs",
-    "lib": [
-      "es6"
-    ],
+    "baseUrl": ".",
+    "target": "es2020",
+    "module": "CommonJS",
+    "moduleResolution": "node",
+    "experimentalDecorators": true,
+    "outDir": "./build",
+    "pretty": true,
     "allowJs": true,
-    "outDir": "build",
-    "rootDir": "src",
+    "noEmitOnError": false,
+    "sourceMap": true,
     "strict": true,
-    "noImplicitAny": true,
+    "noImplicitAny": false,
     "esModuleInterop": true,
     "resolveJsonModule": true,
-  }
+    "allowSyntheticDefaultImports": true,
+    "removeComments": true,
+    "newLine": "lf",
+    "noUnusedLocals": true,
+    "noFallthroughCasesInSwitch": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+    "lib": [
+      "esnext",
+    ],
+    "plugins": [
+      {
+        "transform": "typescript-transform-paths"
+      }
+    ],
+    "typeRoots": [
+      "./node_modules/@types",
+      "./src/types/**/*"
+    ],
+    "paths": {
+      "~/*": [
+        "./src/*"
+      ]
+    }
+  },
+  "include": [
+    "src/"
+  ],
+  "exclude": [
+    "src/tests",
+    "src/scripts",
+    "src/cronjobs"
+  ]
 }

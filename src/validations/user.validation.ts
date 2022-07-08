@@ -13,11 +13,9 @@ export const getUserValidation = z.object({
 
 export const createUserValidation = z.object({
   name: z.string()
-    .min(2, { message: 'NON_EMPTY' })
-    .optional(),
+    .min(2, { message: 'NON_EMPTY' }),
   email: z.string()
-    .min(2, { message: 'NON_EMPTY' })
-    .optional(),
+    .min(2, { message: 'NON_EMPTY' }),
   password: z.string()
     .min(2, { message: 'NON_EMPTY' })
     .max(10, { message: 'MAX_LENGTH_8' }),
@@ -26,7 +24,8 @@ export const createUserValidation = z.object({
     .optional(),
   phone: z.string()
     .min(2, { message: 'NON_EMPTY' })
-    .max(13, { message: 'MAX_LENGTH_13' }),
+    .max(13, { message: 'MAX_LENGTH_13' })
+    .optional(),
   birthdate: z.string()
     .min(2, { message: 'MIN_LENGHT_3' })
     .optional(),
@@ -105,10 +104,4 @@ export const updateUserValidation = z.object({
     country: z.string()
       .optional(),
   })
-})
-
-export const idValidation = z.object({
-  id: z.string()
-    .min(2, { message: 'NON_EMPTY' })
-    .optional(),
 })

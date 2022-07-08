@@ -2,7 +2,7 @@ import { z } from "zod";
 import {
   createAddressValidation,
   getAddressValidation
-} from "../validations/address.validation";
+} from "../validations";
 
 export namespace AddressTypes {
   export type get = z.infer<typeof getAddressValidation>

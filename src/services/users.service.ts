@@ -1,3 +1,4 @@
+// import { Generator } from "../helpers/generator";
 import { Messages, StatusCode } from "../constants";
 import { Exception } from "../helpers";
 import { User } from "../models";
@@ -7,7 +8,7 @@ import {
   getUserValidation,
   updateUserValidation,
   idValidation
-} from "../validations/user.validation";
+} from "../validations";
 
 export namespace UsersService {
   export const get = async (params: UsersTypes.get) => {
@@ -30,7 +31,7 @@ export namespace UsersService {
         User.count()
       ])
 
-      if (users) {
+      if (!users) {
         throw new Exception.AppError(
           StatusCode.BAD_REQUEST,
           [Messages.StatusMessage.NOT_FOUND])
@@ -65,6 +66,9 @@ export namespace UsersService {
       if (emailExist) {
         throw new Exception.AppError(StatusCode.BAD_REQUEST, [Messages.User.USER_EXIST])
       }
+
+      // const addressFind = await Generator.address(address.zipCode)
+      // const addressData = { ...addressFind, streetNumber: address.streetNumber }
 
       const userCreated = await User.create({
         name,
