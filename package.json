@@ -13,7 +13,8 @@
     "lint:fix": "eslint --ext js,ts src --fix",
     "docker:up": "docker-compose -f docker-compose.test.yml up -d",
     "docker:down": "docker-compose down",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "painel": "sh ./scripts/prompt.sh"
   },
   "dependencies": {
     "axios": "^0.27.2",
@@ -32,6 +33,7 @@
     "lodash": "^4.17.21",
     "mongoose": "^6.4.1",
     "rimraf": "^3.0.2",
+    "run-func": "^3.0.0",
     "socketio": "^1.0.0",
     "swagger": "^0.7.5",
     "swagger-ui-express": "^4.4.0",
