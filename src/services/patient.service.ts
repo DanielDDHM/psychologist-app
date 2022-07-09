@@ -1,10 +1,50 @@
-import { StatusCode } from "../constants"
+import { Messages, StatusCode } from "../constants"
 import { Exception } from "../helpers"
 import { Patient, Psychologist, User } from "../models"
 import { PatientTypes } from "../types"
-import { registerPatientValidation } from "../validations"
+import {
+  getValidation,
+  registerPatientValidation
+} from "../validations"
 
 export namespace PatientService {
+
+  export const get = async (params: PatientTypes.get) => {
+    try {
+      const { id, page, perPage } = getValidation.parse(params)
+
+      const [patients, total] = await Promise.all([
+        Patient.find(
+          id ? { _id: id } : {},
+          null,
+          {
+            skip: Number((page! - 1) * perPage!) || 0,
+            limit: Number(perPage) || 10
+          }
+        ),
+        Patient.count()
+      ])
+
+      if (!patients) {
+        throw new Exception.AppError(
+          StatusCode.BAD_REQUEST,
+          [Messages.StatusMessage.NOT_FOUND])
+      }
+
+      return { patients, total }
+
+    } catch (e: any) {
+      if (e instanceof Exception.AppError) {
+        throw new Exception.AppError(
+          e?.statusCode,
+          e?.messages)
+      }
+      throw new Exception.AppError(
+        StatusCode.INTERNAL_SERVER_ERROR,
+        [e?.message])
+    }
+  }
+
   export const register = async (params: PatientTypes.register) => {
     try {
       const { user, psychologist } = registerPatientValidation.parse(params)
@@ -27,10 +67,8 @@ export namespace PatientService {
           ['PATIENT EXIST'])
       }
 
-      const pat = await patientExist?.populate('user', 'id')
-      const psy = await psyExist?.populate('user', 'id')
-
-      if (pat?.user?.id === psy?.user?.id) {
+      const psy = psyExist.user?.valueOf()
+      if (user === psy) {
         throw new Exception.AppError(
           StatusCode.BAD_REQUEST,
           ['PATIENT AND PSY CANNOT BE THE SAME'])

@@ -19,6 +19,6 @@ routes
   .use('/diagnostics', diagnosticRoutes)
   .use('/users', usersRoutes)
   .use('/psy', psyRoutes)
-  .use('/patient', patRoutes)
+  .use('/pat', patRoutes)
 
 export default routes

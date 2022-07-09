@@ -1,16 +1,5 @@
 import { z } from "zod";
 
-export const getUserValidation = z.object({
-  id: z.string()
-    .optional(),
-  page: z.number()
-    .nonnegative()
-    .optional(),
-  perPage: z.number()
-    .nonnegative()
-    .optional()
-})
-
 export const createUserValidation = z.object({
   name: z.string()
     .min(2, { message: 'NON_EMPTY' }),

@@ -4,10 +4,10 @@ import { Exception } from "../helpers";
 import { User } from "../models";
 import { DefaultTypes, UsersTypes } from "../types";
 import {
+  getValidation,
+  idValidation,
   createUserValidation,
-  getUserValidation,
-  updateUserValidation,
-  idValidation
+  updateUserValidation
 } from "../validations";
 
 export namespace UsersService {
@@ -17,7 +17,7 @@ export namespace UsersService {
         id,
         page,
         perPage
-      } = getUserValidation.parse(params)
+      } = getValidation.parse(params)
 
       const [users, total] = await Promise.all([
         User.find(
