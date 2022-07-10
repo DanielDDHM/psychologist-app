@@ -13,6 +13,7 @@ echo "Select Service [
     7 - chat 
 ]:"
 read  response
+clear
 case "$response" in
     [1])
         sh ./scripts/services/user.services.sh
