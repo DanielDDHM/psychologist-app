@@ -24,7 +24,7 @@ export namespace UsersService {
           id ? { _id: id } : {},
           null,
           {
-            skip: Number((page! - 1) * perPage!) || 0,
+            skip: Number((page! - 1) * perPage!) || 1,
             limit: Number(perPage) || 10
           }
         ),

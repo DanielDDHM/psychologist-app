@@ -1,5 +1,20 @@
 #!/bin/sh
 
+get(){
+    echo "First Param: ID (If have)"
+    read USERID
+    echo "First Param: page (If have)"
+    read PAGE
+    echo "First Param: perPage (If have)"
+    read PERPAGE
+
+    module="USERS"
+    type="GET"
+    body='{"id":"'$USERID'"}'
+    subbody='{"page":"'$PAGE'","perPage":"'$perPage'"}'
+    clear
+    npx ts-node-dev --exit-child --transpile-only --ignore-watch node_modules run-func ./scripts/functionCall.service.ts cb $module $type $body $subbody
+}
 create(){
     echo "First Param: NAME"
     read NAME
@@ -26,6 +41,7 @@ create(){
 
     clear
     npx ts-node-dev --exit-child --transpile-only --ignore-watch node_modules run-func ./scripts/functionCall.service.ts cb $module $type $body $address
+    
 }
 
 echo "Select OPERATION [
@@ -42,5 +58,8 @@ clear
 case "$response" in
     [1])
         create
+        ;;
+    [7])
+        get
         ;;
 esac

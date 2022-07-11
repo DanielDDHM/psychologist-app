@@ -45,6 +45,7 @@
   "exclude": [
     "src/tests",
     "src/scripts",
-    "src/cronjobs"
+    "src/cronjobs",
+    "scripts"
   ]
 }
