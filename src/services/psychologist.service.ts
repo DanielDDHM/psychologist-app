@@ -54,8 +54,6 @@ export namespace PsyService {
         Psychologist.findOne({ user })
       ])
 
-      console.log({ userExist, psyExist })
-
       if (!userExist) {
         throw new Exception.AppError(
           StatusCode.BAD_REQUEST,

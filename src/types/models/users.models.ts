@@ -2,14 +2,15 @@ import { DefaultModelsTypes } from "./default.models"
 
 export namespace UsersModelsTypes {
 
-  export interface Psychologist extends DefaultModelsTypes.users {
+  export interface Psychologist extends DefaultModelsTypes.register {
     about: string,
+    patient: Array<Patient>
   }
   export interface Mood extends DefaultModelsTypes.register {
     mood: string
   }
 
-  export interface Patient extends DefaultModelsTypes.users {
+  export interface Patient extends DefaultModelsTypes.register {
     psychologist: string
   }
 
