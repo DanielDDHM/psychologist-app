@@ -4,12 +4,12 @@ import { UserController } from '../controller';
 const router = Router();
 
 router
-	.get('/:id?', UserController.getUser)
-	.post('/', UserController.createUser)
-	.put('/:id', UserController.updateUser)
-	.patch('/confirm/:id', UserController.confirmUser)
-	.patch('/active/:id', UserController.activateUser)
+	.get('/:id?', UserController.get)
+	.post('/', UserController.create)
+	.put('/:id', UserController.update)
+	.patch('/confirm/:id', UserController.confirm)
+	.patch('/active/:id', UserController.activate)
 	.patch('/adminify', UserController.makeAdmin)
-	.delete('/:id', UserController.deleteUser)
+	.delete('/:id', UserController.destroy)
 
 export default router

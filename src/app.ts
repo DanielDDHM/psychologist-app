@@ -31,17 +31,20 @@ app.use("/api-docs",
 mongoose.connect(DATABASE_URL!)
   .then(() => {
     console.log(`APP DB CONECTED: ${DATABASE_URL}`)
-    console.log(`APP STARTED ON http://localhost:${PORT || 3000}`);
-    console.log(`API DOCS: http://localhost:${PORT || 3000}/api-docs`);
 
     const serv = createServer(app)
     const ws = new WebSocket.Server(serv)
 
+    ws.on("connection", () => console.log("Entrou"))
+
     ws.on("connection", (socket) => {
-      console.log(socket)
+      socket.emit("ON")
     })
 
     serv.listen(PORT || 3000)
+
+    console.log(`APP STARTED ON http://localhost:${PORT || 3000}`);
+    console.log(`API DOCS: http://localhost:${PORT || 3000}/api-docs`);
 
   })
   .catch(e => console.error('COULD NOT CONNECT ON DB', e))

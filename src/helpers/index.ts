@@ -1,2 +1,3 @@
 export * from './exception'
-export * from './password.auth'
+export * from './password'
+export * from './generator'

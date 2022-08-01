@@ -4,6 +4,6 @@ import { PatientController } from '../controller';
 const router = Router();
 
 router
-  .get('/:id?', PatientController.getPat)
+  .get('/:id?', PatientController.get)
   .post('/', PatientController.register)
 export default router

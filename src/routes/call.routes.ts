@@ -1,12 +1,12 @@
 import { Router } from 'express';
+import { CallController } from '~/controller';
 
 const router = Router();
 
 router
-	.get('/consultation/:id')
-	.post('/room-status')
-	.patch('/accept/:id')
-	.patch('/start')
-	.patch('/review/:id')
+	.get('/consultation/:id', CallController.get)
+	.patch('/accept/:id', CallController.accept)
+	.patch('/start', CallController.start)
+	.patch('/review/:id', CallController.review)
 
 export default router

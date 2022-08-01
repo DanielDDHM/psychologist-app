@@ -4,7 +4,7 @@ import { UsersService } from "../services/users.service";
 import { UsersTypes } from "../types";
 
 export namespace UserController {
-  export const getUser = async (req: Request, res: Response) => {
+  export const get = async (req: Request, res: Response) => {
     const { params: { id }, query } = req
     try {
       const users = await UsersService.get({ id, ...query } as UsersTypes.get)
@@ -14,7 +14,7 @@ export namespace UserController {
     }
   }
 
-  export const createUser = async (req: Request, res: Response) => {
+  export const create = async (req: Request, res: Response) => {
     const { body } = req
     try {
       const users = await UsersService.create(body as UsersTypes.create)
@@ -24,7 +24,7 @@ export namespace UserController {
     }
   }
 
-  export const updateUser = async (req: Request, res: Response) => {
+  export const update = async (req: Request, res: Response) => {
     const { params: { id }, body } = req
     try {
       const user = await UsersService.update({ id, ...body } as UsersTypes.update)
@@ -34,7 +34,7 @@ export namespace UserController {
     }
   }
 
-  export const confirmUser = async (req: Request, res: Response) => {
+  export const confirm = async (req: Request, res: Response) => {
     const { params: { id } } = req
     try {
       const user = await UsersService.confirm({ id } as UsersTypes.idOnly)
@@ -44,7 +44,7 @@ export namespace UserController {
     }
   }
 
-  export const activateUser = async (req: Request, res: Response) => {
+  export const activate = async (req: Request, res: Response) => {
     const { params: { id } } = req
     try {
       const user = await UsersService.activate({ id } as UsersTypes.idOnly)
@@ -54,7 +54,7 @@ export namespace UserController {
     }
   }
 
-  export const deleteUser = async (req: Request, res: Response) => {
+  export const destroy = async (req: Request, res: Response) => {
     const { params: { id } } = req
     try {
       const user = await UsersService.destroy({ id } as UsersTypes.idOnly)

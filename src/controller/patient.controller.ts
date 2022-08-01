@@ -5,7 +5,7 @@ import { PatientTypes } from "../types"
 
 export namespace PatientController {
 
-  export const getPat = async (req: Request, res: Response) => {
+  export const get = async (req: Request, res: Response) => {
     const { params: { id }, query } = req
     try {
       const users = await PatientService.get({ id, ...query } as PatientTypes.get)

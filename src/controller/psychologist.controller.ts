@@ -5,7 +5,7 @@ import { PsyTypes } from "../types"
 
 export namespace PsyController {
 
-  export const getPsy = async (req: Request, res: Response) => {
+  export const get = async (req: Request, res: Response) => {
     const { params: { id }, query } = req
     try {
       const users = await PsyService.get({ id, ...query } as PsyTypes.get)
