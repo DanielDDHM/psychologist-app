@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-escape */
 import { model, Schema } from "mongoose";
 import { DefaultModelsTypes } from "../types/models";
 

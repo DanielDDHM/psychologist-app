@@ -7,6 +7,10 @@ import swaggerUi from 'swagger-ui-express';
 import express, { Request, Response } from 'express';
 const { PORT, DATABASE_URL } = process.env
 import { Documentation } from './docs/api';
+import { createServer } from "http";
+import * as WebSocket from 'socket.io'
+
+
 //APP
 const app = express();
 
@@ -26,10 +30,18 @@ app.use("/api-docs",
 
 mongoose.connect(DATABASE_URL!)
   .then(() => {
-    app.listen(PORT, () => {
-      console.log(`APP DB: ${DATABASE_URL}`)
-      console.log(`APP STARTED ON http://localhost:${PORT || 3000}`);
-      console.log(`API DOCS: http://localhost:${PORT || 3000}/api-docs`);
-    });
+    console.log(`APP DB CONECTED: ${DATABASE_URL}`)
+    console.log(`APP STARTED ON http://localhost:${PORT || 3000}`);
+    console.log(`API DOCS: http://localhost:${PORT || 3000}/api-docs`);
+
+    const serv = createServer(app)
+    const ws = new WebSocket.Server(serv)
+
+    ws.on("connection", (socket) => {
+      console.log(socket)
+    })
+
+    serv.listen(PORT || 3000)
+
   })
   .catch(e => console.error('COULD NOT CONNECT ON DB', e))
