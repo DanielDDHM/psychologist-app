@@ -35,11 +35,11 @@ mongoose.connect(DATABASE_URL!)
     const serv = createServer(app)
     const ws = new WebSocket.Server(serv)
 
-    ws.on("connection", () => console.log("Entrou"))
-
-    ws.on("connection", (socket) => {
+    ws.on("message", (socket) => {
       socket.emit("ON")
     })
+
+    ws.on("close", () => { console.log('closed') })
 
     serv.listen(PORT || 3000)
 

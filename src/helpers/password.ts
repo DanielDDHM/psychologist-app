@@ -1,7 +1,7 @@
 import bcrypt from 'bcryptjs'
 import { Messages, StatusCode } from '../constants'
 import { Exception } from './exception'
-export namespace Password {
+export namespace PasswordGenerator {
   export const crypt = async (pass: string, salt: string) => {
     try {
       const encryptPass = await bcrypt.hash(pass, salt)

@@ -2,8 +2,17 @@ import axios from "axios";
 import { Messages, StatusCode } from "../constants"
 import { Exception } from "./exception"
 
-export namespace Generator {
-  export const address = async (zipCode: string) => {
+export namespace AddressGenerator {
+
+  export interface addressT {
+    zipCode: string,
+    street: string,
+    neighboorhood: string,
+    city: string,
+    state: string
+  }
+
+  export const address = async (zipCode: string): Promise<addressT> => {
     try {
       const address = await (await axios.get(`https://viacep.com.br/ws/${zipCode}/json/`)).data
 

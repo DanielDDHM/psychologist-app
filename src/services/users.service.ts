@@ -1,4 +1,3 @@
-// import { Generator } from "../helpers/generator";
 import { Messages, StatusCode } from "../constants";
 import { Exception } from "../helpers";
 import { User } from "../models";
@@ -66,9 +65,6 @@ export namespace UsersService {
       if (emailExist) {
         throw new Exception.AppError(StatusCode.BAD_REQUEST, [Messages.User.USER_EXIST])
       }
-
-      // const addressFind = await Generator.address(address.zipCode)
-      // const addressData = { ...addressFind, streetNumber: address.streetNumber }
 
       const userCreated = await User.create({
         name,
