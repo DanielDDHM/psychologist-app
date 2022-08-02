@@ -1,5 +1,5 @@
 import { Messages, StatusCode } from "../constants";
-import { Exception } from "../helpers";
+import { AddressGenerator, Exception } from "../helpers";
 import { User } from "../models";
 import { DefaultTypes, UsersTypes } from "../types";
 import {
@@ -10,7 +10,7 @@ import {
 } from "../validations";
 
 export namespace UsersService {
-  export const get = async (params: UsersTypes.get) => {
+  export const get = async (params: UsersTypes.get): Promise<{ users: any, total: number }> => {
     try {
       const {
         id,
@@ -66,6 +66,8 @@ export namespace UsersService {
         throw new Exception.AppError(StatusCode.BAD_REQUEST, [Messages.User.USER_EXIST])
       }
 
+      const newAddress = await AddressGenerator.address(address.zipCode, address.streetNumber)
+
       const userCreated = await User.create({
         name,
         email,
@@ -73,7 +75,7 @@ export namespace UsersService {
         photo,
         birthdate,
         phone,
-        address
+        address: newAddress
       })
 
       if (!userCreated) {

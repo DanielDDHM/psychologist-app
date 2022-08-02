@@ -1,6 +1,6 @@
 import { Request, Response } from "express"
-import { StatusCode } from "~/constants"
-import { DiagnosticService } from "~/services"
+import { StatusCode } from "../constants"
+import { DiagnosticService } from "../services"
 
 export namespace DiagnosticController {
   export const get = async (

@@ -1,6 +1,6 @@
 import { Request, Response } from "express"
-import { StatusCode } from "~/constants"
-import { ChatService } from "~/services"
+import { StatusCode } from "../constants"
+import { ChatService } from "../services"
 
 export namespace ChatController {
   export const get = async (

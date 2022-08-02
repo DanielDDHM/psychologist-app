@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { DiagnosticController } from '~/controller';
+import { DiagnosticController } from '../controller';
 
 const router = Router();
 

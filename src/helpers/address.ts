@@ -9,10 +9,11 @@ export namespace AddressGenerator {
     street: string,
     neighboorhood: string,
     city: string,
-    state: string
+    state: string,
+    streetNumber: number
   }
 
-  export const address = async (zipCode: string): Promise<addressT> => {
+  export const address = async (zipCode: string, streetNumber: number): Promise<addressT> => {
     try {
       const address = await (await axios.get(`https://viacep.com.br/ws/${zipCode}/json/`)).data
 
@@ -27,7 +28,8 @@ export namespace AddressGenerator {
         street: address.logradouro,
         neighboorhood: address.bairro,
         city: address.localidade,
-        state: address.uf
+        state: address.uf,
+        streetNumber: streetNumber
       }
 
     } catch (e: any) {

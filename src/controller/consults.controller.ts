@@ -1,6 +1,6 @@
 import { Request, Response } from "express"
-import { StatusCode } from "~/constants"
-import { ConsultService } from "~/services"
+import { StatusCode } from "../constants"
+import { ConsultService } from "../services"
 
 export namespace ConsultController {
   export const get = async (
