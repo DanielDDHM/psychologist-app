@@ -67,12 +67,12 @@ export namespace PatientService {
           ['PATIENT EXIST'])
       }
 
-      const psy = psyExist.user?.valueOf()
-      if (user === psy) {
-        throw new Exception.AppError(
-          StatusCode.BAD_REQUEST,
-          ['PATIENT AND PSY CANNOT BE THE SAME'])
-      }
+      // const psy = psyExist.user?.valueOf()
+      // if (user === psy) {
+      //   throw new Exception.AppError(
+      //     StatusCode.BAD_REQUEST,
+      //     ['PATIENT AND PSY CANNOT BE THE SAME'])
+      // }
 
       const newPatient = await Patient.create({
         user,

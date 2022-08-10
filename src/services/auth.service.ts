@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken'
 import { Messages, StatusCode } from "../constants"
-import { Password } from "../helpers"
+import { PasswordGenerator } from "../helpers"
 import { Exception } from "../helpers"
 import { User } from "../models"
 
@@ -11,7 +11,7 @@ export namespace AuthService {
     const user = await User.findOne({ email })
     if (!user) throw new Exception.AppError(StatusCode.NOT_FOUND, [Messages.Auth.MISSING_TOKEN]);
 
-    const passMatch = await Password.compare(password, user?.password!)
+    const passMatch = await PasswordGenerator.compare(password, user?.password!)
 
     if (!passMatch || user?.email !== email) {
       throw new Exception.AppError(StatusCode.BAD_REQUEST, [Messages.Auth.NOT_PERMITED])

@@ -18,6 +18,7 @@ export namespace UsersService {
         perPage
       } = getValidation.parse(params)
 
+
       const [users, total] = await Promise.all([
         User.find(
           id ? { _id: id } : {},
@@ -30,13 +31,14 @@ export namespace UsersService {
         User.count()
       ])
 
-      if (!users) {
+      if (!users || users.length === 0) {
         throw new Exception.AppError(
           StatusCode.BAD_REQUEST,
           [Messages.StatusMessage.NOT_FOUND])
       }
 
       return { users, total }
+
     } catch (e: any) {
       if (e instanceof Exception.AppError) {
         throw new Exception.AppError(
