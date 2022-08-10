@@ -26,6 +26,7 @@
     "no-continue": "off",
     "no-new": "off",
     "no-console": "off",
-    "no-namespace": "off"
+    "no-namespace": "off",
+    "no-var": "off"
   }
 }
