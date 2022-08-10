@@ -1,7 +1,6 @@
 export { default as Call } from './call'
 export { default as Chat } from './chat'
 export { default as Diagnosis } from './diagnosis'
-export { default as Library } from './library'
 export { default as Mood } from './mood'
 export { default as Patient } from './patient'
 export { default as Psychologist } from './psychologist'

@@ -28,7 +28,9 @@ app.get('/', (req: Request, res: Response) => {
 app.use("/api-docs",
   swaggerUi.serve, swaggerUi.setup(Documentation.Api))
 
-mongoose.connect(DATABASE_URL!)
+
+export const start = async () => {
+await  mongoose.connect(DATABASE_URL!)
   .then(() => {
     console.log(`APP DB CONECTED: ${DATABASE_URL}`)
 
@@ -48,3 +50,6 @@ mongoose.connect(DATABASE_URL!)
 
   })
   .catch(e => console.error('COULD NOT CONNECT ON DB', e))
+}
+
+start()
