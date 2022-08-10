@@ -1,13 +1,13 @@
 import { Router } from "express";
 
-import authRoutes from './auth.route'
+import authRoutes from './auth.routes'
 import callRoutes from './call.routes'
-import chatRoutes from './chat.route'
-import consultRoutes from './consults.route'
-import diagnosticRoutes from './diagnostics.route'
-import usersRoutes from './users.route'
-import psyRoutes from './psychologist.route'
-import patRoutes from './patient.route'
+import chatRoutes from './chat.routes'
+import consultRoutes from './consults.routes'
+import diagnosticRoutes from './diagnostics.routes'
+import usersRoutes from './users.routes'
+import psyRoutes from './psychologist.routes'
+import patRoutes from './patient.routes'
 
 const routes = Router();
 
