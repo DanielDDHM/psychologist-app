@@ -3,3 +3,5 @@
 
 npm run build
 npm run test
+
+echo 'ITS ALL OKAY, PUSHED TO GIT'
