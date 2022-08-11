@@ -25,22 +25,6 @@ export const createUserValidation = z.object({
     streetNumber: z.number()
       .nonnegative({ message: 'NON_NEGATIVE' })
       .min(2, { message: 'NON_EMPTY' }),
-    // street: z.string()
-    //   .min(2, { message: 'NON_EMPTY' })
-    //   .optional(),
-    // neighboorhood: z.string()
-    //   .min(2, { message: 'NON_EMPTY' })
-    //   .optional(),
-    // city: z.string()
-    //   .min(2, { message: 'NON_EMPTY' })
-    //   .max(10, { message: 'MAX_LENGTH_8' })
-    //   .optional(),
-    // state: z.string()
-    //   .min(2, { message: 'NON_EMPTY' })
-    //   .max(3, { message: 'MAX_LENGTH_3' })
-    //   .optional(),
-    // country: z.string()
-    //   .optional(),
   }),
 })
 
@@ -76,21 +60,5 @@ export const updateUserValidation = z.object({
     streetNumber: z.number()
       .nonnegative({ message: 'NON_NEGATIVE' })
       .min(2, { message: 'NON_EMPTY' }),
-    street: z.string()
-      .min(2, { message: 'NON_EMPTY' })
-      .optional(),
-    neighboorhood: z.string()
-      .min(2, { message: 'NON_EMPTY' })
-      .optional(),
-    city: z.string()
-      .min(2, { message: 'NON_EMPTY' })
-      .max(10, { message: 'MAX_LENGTH_8' })
-      .optional(),
-    state: z.string()
-      .min(2, { message: 'NON_EMPTY' })
-      .max(3, { message: 'MAX_LENGTH_3' })
-      .optional(),
-    country: z.string()
-      .optional(),
   })
 })

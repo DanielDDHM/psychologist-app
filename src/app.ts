@@ -20,6 +20,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
 app.use('/v1', routes)
+
 // one call for test
 app.get('/', (req: Request, res: Response) => {
   return res.send({ status: 'UP' });

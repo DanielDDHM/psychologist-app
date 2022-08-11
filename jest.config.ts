@@ -11,5 +11,5 @@ module.exports = {
     modulePathIgnorePatterns: ["<rootDir>/build/"],
     moduleNameMapper: {
       "~/(.*)": "<rootDir>/src/$1"
-    }
+    },
   }

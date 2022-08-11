@@ -17,3 +17,5 @@ describe('[GET PATIENT]', () => {
         expect(pat).toHaveProperty('patients')
     })
 })
+
+afterAll(async () => await mongoose.disconnect())

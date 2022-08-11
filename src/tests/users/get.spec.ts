@@ -17,3 +17,7 @@ describe('[GET USERS]', () => {
         expect(users).toHaveProperty('users')
     })
 })
+
+afterAll(async () => {
+    mongoose.disconnect()
+})
