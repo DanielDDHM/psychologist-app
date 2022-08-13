@@ -28,7 +28,7 @@ export namespace UsersService {
             limit: Number(perPage) || 10
           }
         ),
-        User.count()
+        User.count(id ? { _id: id } : {})
       ])
 
       if (!users || users.length === 0) {

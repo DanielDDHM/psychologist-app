@@ -22,7 +22,7 @@ export namespace PsyService {
             limit: Number(perPage) || 10
           }
         ),
-        Psychologist.count()
+        Psychologist.count(id ? { _id: id } : {})
       ])
 
       if (!psychologists) {

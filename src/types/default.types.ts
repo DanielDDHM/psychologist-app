@@ -14,6 +14,3 @@ export namespace DefaultTypes {
   }
 }
 
-export namespace DefaultRoles {
-
-}

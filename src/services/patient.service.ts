@@ -22,7 +22,7 @@ export namespace PatientService {
             limit: Number(perPage) || 10
           }
         ),
-        Patient.count()
+        Patient.count(id ? { _id: id } : {})
       ])
 
       if (!patients) {
@@ -67,7 +67,8 @@ export namespace PatientService {
           ['PATIENT EXIST'])
       }
 
-      // const psy = psyExist.user?.valueOf()
+      // const psy = psyExist?.user.valueOf()
+
       // if (user === psy) {
       //   throw new Exception.AppError(
       //     StatusCode.BAD_REQUEST,
