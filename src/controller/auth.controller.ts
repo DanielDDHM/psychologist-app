@@ -14,9 +14,7 @@ export namespace AuthController {
 
   export const logout = async (req: Request, res: Response) => {
     try {
-      const token = req.headers['authorization'];
-
-      const userLogout = await AuthService.logout(token);
+      const userLogout = await AuthService.logout();
 
       return res.status(StatusCode.OK).send(userLogout)
     } catch (error: any) {
