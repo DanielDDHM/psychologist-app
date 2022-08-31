@@ -9,7 +9,7 @@ import {
 
 export namespace PsyService {
 
-  export const get = async (params: PsyTypes.get): Promise<{psychologists: any, total: number}> => {
+  export const get = async (params: PsyTypes.get) => {
     try {
       const { id, page, perPage } = getValidation.parse(params)
 
@@ -45,7 +45,7 @@ export namespace PsyService {
     }
   }
 
-  export const register = async (params: PsyTypes.register)=> {
+  export const register = async (params: PsyTypes.register) => {
     try {
       const { user, about } = registerPsyValidation.parse(params)
 

@@ -5,7 +5,7 @@ import { Exception } from "../helpers"
 import { User } from "../models"
 
 export namespace AuthService {
-  export const login = async (payload: any) => {
+  export const login = async (payload: any): Promise<{ auth: boolean, token: string }> => {
     const { email, password } = payload
 
     const user = await User.findOne({ email })
@@ -22,9 +22,9 @@ export namespace AuthService {
     return { auth: true, token };
   }
 
-  export const logout = async (token: any) => {
+  export const logout = async (): Promise<{ auth: boolean, token: null }> => {
     try {
-      console.log(token)
+
       return { auth: false, token: null };
     } catch (error: any) {
       throw new Exception.AppError(

@@ -1,4 +1,4 @@
-import { model, Schema } from "mongoose";
+import { InferSchemaType, model, Schema } from "mongoose";
 import { UsersModelsTypes } from "../types/models";
 
 const PatientSchema: Schema = new Schema({
@@ -19,3 +19,5 @@ PatientSchema.pre("save", function (next) {
 
 export default model<UsersModelsTypes.Patient>(
   "Patient", PatientSchema)
+
+export type patientModelType = InferSchemaType<typeof PatientSchema>

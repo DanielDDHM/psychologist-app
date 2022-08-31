@@ -10,7 +10,7 @@ import {
 } from "../validations";
 
 export namespace UsersService {
-  export const get = async (params: UsersTypes.get): Promise<{ users: any, total: number }> => {
+  export const get = async (params: UsersTypes.get) => {
     try {
       const {
         id,
