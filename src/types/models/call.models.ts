@@ -1,4 +1,4 @@
-import { DefaultModelsTypes } from './default.models'
+import { DefaultModelsTypes } from "./default.models"
 
 export namespace CallModelsTypes {
   export interface Call extends DefaultModelsTypes.Call {

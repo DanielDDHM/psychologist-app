@@ -1,6 +1,6 @@
-import axios from 'axios'
-import { Messages, StatusCode } from '../constants'
-import { Exception } from './exception'
+import axios from "axios"
+import { Messages, StatusCode } from "../constants"
+import { Exception } from "./exception"
 
 export namespace AddressGenerator {
   export interface addressT {

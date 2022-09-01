@@ -1,8 +1,8 @@
-import jwt from 'jsonwebtoken'
-import { Messages, StatusCode } from '../constants'
-import { PasswordGenerator } from '../helpers'
-import { Exception } from '../helpers'
-import { User } from '../models'
+import jwt from "jsonwebtoken"
+import { Messages, StatusCode } from "../constants"
+import { PasswordGenerator } from "../helpers"
+import { Exception } from "../helpers"
+import { User } from "../models"
 
 export namespace AuthService {
   export const login = async (payload: any): Promise<{ auth: boolean; token: string }> => {
@@ -17,7 +17,7 @@ export namespace AuthService {
       throw new Exception.AppError(StatusCode.BAD_REQUEST, [Messages.Auth.NOT_PERMITED])
     }
 
-    const token = jwt.sign(email, String(process.env.AUTH_SECRET), { expiresIn: '1h' })
+    const token = jwt.sign(email, String(process.env.AUTH_SECRET), { expiresIn: "1h" })
 
     return { auth: true, token }
   }

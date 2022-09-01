@@ -1,5 +1,5 @@
-import { model, Schema } from 'mongoose'
-import { BusinessModelsTypes } from '../types/models'
+import { model, Schema } from "mongoose"
+import { BusinessModelsTypes } from "../types/models"
 
 const ClinicSchema: Schema = new Schema({
   isActive: { type: Boolean, default: true },
@@ -19,7 +19,7 @@ const ClinicSchema: Schema = new Schema({
   updatedAt: { type: Date, required: false },
 })
 
-ClinicSchema.pre('save', function (next) {
+ClinicSchema.pre("save", function (next) {
   const now = new Date()
   if (!this.updatedAt) {
     this.updatedAt = now
@@ -27,4 +27,4 @@ ClinicSchema.pre('save', function (next) {
   next()
 })
 
-export default model<BusinessModelsTypes.Clinic>('Chats', ClinicSchema)
+export default model<BusinessModelsTypes.Clinic>("Chats", ClinicSchema)

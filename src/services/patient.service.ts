@@ -1,9 +1,9 @@
-import { Messages, StatusCode } from '../constants'
-import { Exception } from '../helpers'
-import { Patient, Psychologist, User } from '../models'
-import { patientModelType } from '../models/patient'
-import { PatientTypes } from '../types'
-import { getValidation, registerPatientValidation } from '../validations'
+import { Messages, StatusCode } from "../constants"
+import { Exception } from "../helpers"
+import { Patient, Psychologist, User } from "../models"
+import { patientModelType } from "../models/patient"
+import { PatientTypes } from "../types"
+import { getValidation, registerPatientValidation } from "../validations"
 
 export namespace PatientService {
   export const get = async (params: PatientTypes.get) => {
@@ -43,23 +43,25 @@ export namespace PatientService {
       const psyExist: patientModelType | null = await Psychologist.findById({ _id: psychologist })
 
       if (!userExist || !psyExist) {
-        throw new Exception.AppError(StatusCode.BAD_REQUEST, ['USER NOT FOUND'])
+        throw new Exception.AppError(StatusCode.BAD_REQUEST, ["USER NOT FOUND"])
       }
 
       if (patientExist) {
-        throw new Exception.AppError(StatusCode.BAD_REQUEST, ['PATIENT EXIST'])
+        throw new Exception.AppError(StatusCode.BAD_REQUEST, ["PATIENT EXIST"])
       }
 
       const psy = psyExist?.user.valueOf()
 
       if (user === psy) {
-        throw new Exception.AppError(StatusCode.BAD_REQUEST, ['PATIENT AND PSY CANNOT BE THE SAME'])
+        throw new Exception.AppError(StatusCode.BAD_REQUEST, ["PATIENT AND PSY CANNOT BE THE SAME"])
       }
 
       const newPatient = await Patient.create({
         user,
         psychologist,
       })
+
+      newPatient ? await Psychologist.findByIdAndUpdate({ _id: psychologist }, { $push: { patients: newPatient._id } }) : null
 
       return newPatient
     } catch (e: any) {

@@ -1,8 +1,8 @@
-export { default as Call } from './call'
-export { default as Chat } from './chat'
-export { default as Diagnosis } from './diagnosis'
-export { default as Mood } from './mood'
-export { default as Patient } from './patient'
-export { default as Psychologist } from './psychologist'
-export { default as Schedule } from './schedule'
-export { default as User } from './user'
+export { default as Call } from "./call"
+export { default as Chat } from "./chat"
+export { default as Diagnosis } from "./diagnosis"
+export { default as Mood } from "./mood"
+export { default as Patient } from "./patient"
+export { default as Psychologist } from "./psychologist"
+export { default as Schedule } from "./schedule"
+export { default as User } from "./user"

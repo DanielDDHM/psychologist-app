@@ -1,16 +1,20 @@
-import { DefaultModelsTypes } from './default.models'
+import { Types } from "mongoose"
+import { DefaultModelsTypes } from "./default.models"
 
 export namespace UsersModelsTypes {
   export interface Psychologist extends DefaultModelsTypes.register {
+    user: Types.ObjectId
     about: string
-    patient: Array<Patient>
+    patients: Array<Patient>
   }
   export interface Mood extends DefaultModelsTypes.register {
+    user: Types.ObjectId
     mood: string
   }
 
   export interface Patient extends DefaultModelsTypes.register {
-    psychologist: string
+    user: Types.ObjectId
+    psychologist: Types.ObjectId
   }
 
   export interface Diagnosis extends DefaultModelsTypes.register {

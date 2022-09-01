@@ -1,9 +1,9 @@
-import { model, Schema } from 'mongoose'
-import { CallModelsTypes } from '../types/models'
+import { model, Schema } from "mongoose"
+import { CallModelsTypes } from "../types/models"
 
 const ChatSchema: Schema = new Schema({
-  patient: { type: Schema.Types.ObjectId, ref: 'Patient', required: true },
-  psychologist: { type: Schema.Types.ObjectId, ref: 'Psychologist' },
+  patient: { type: Schema.Types.ObjectId, ref: "Patient", required: true },
+  psychologist: { type: Schema.Types.ObjectId, ref: "Psychologist" },
   startDate: { type: Date, required: true },
   endDate: { type: Date },
   PsychologistAccepted: { type: Boolean, default: false },
@@ -16,7 +16,7 @@ const ChatSchema: Schema = new Schema({
   updatedAt: { type: Date, required: false },
 })
 
-ChatSchema.pre('save', function (next) {
+ChatSchema.pre("save", function (next) {
   const now = new Date()
   if (!this.updatedAt) {
     this.updatedAt = now
@@ -24,4 +24,4 @@ ChatSchema.pre('save', function (next) {
   next()
 })
 
-export default model<CallModelsTypes.Chat>('Chats', ChatSchema)
+export default model<CallModelsTypes.Chat>("Chats", ChatSchema)

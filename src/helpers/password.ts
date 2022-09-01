@@ -1,6 +1,6 @@
-import bcrypt from 'bcryptjs'
-import { Messages, StatusCode } from '../constants'
-import { Exception } from './exception'
+import bcrypt from "bcryptjs"
+import { Messages, StatusCode } from "../constants"
+import { Exception } from "./exception"
 export namespace PasswordGenerator {
   export const crypt = async (pass: string, salt: string) => {
     try {

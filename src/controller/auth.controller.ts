@@ -1,6 +1,6 @@
-import { Request, Response } from 'express'
-import { StatusCode } from '../constants'
-import { AuthService } from '../services/auth.service'
+import { Request, Response } from "express"
+import { StatusCode } from "../constants"
+import { AuthService } from "../services/auth.service"
 export namespace AuthController {
   export const login = async (req: Request, res: Response) => {
     const { body } = req

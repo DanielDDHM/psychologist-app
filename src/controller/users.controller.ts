@@ -1,7 +1,7 @@
-import { Request, Response } from 'express'
-import { StatusCode } from '../constants'
-import { UsersService } from '../services/users.service'
-import { UsersTypes } from '../types'
+import { Request, Response } from "express"
+import { StatusCode } from "../constants"
+import { UsersService } from "../services/users.service"
+import { UsersTypes } from "../types"
 
 export namespace UserController {
   export const get = async (req: Request, res: Response) => {

@@ -1,13 +1,13 @@
-import { Messages, StatusCode } from '../constants'
-import { AddressGenerator, Exception } from '../helpers'
-import { User } from '../models'
-import { DefaultTypes, UsersTypes } from '../types'
+import { Messages, StatusCode } from "../constants"
+import { AddressGenerator, Exception } from "../helpers"
+import { User } from "../models"
+import { DefaultTypes, UsersTypes } from "../types"
 import {
   getValidation,
   idValidation,
   createUserValidation,
   updateUserValidation,
-} from '../validations'
+} from "../validations"
 
 export namespace UsersService {
   export const get = async (params: UsersTypes.get) => {

@@ -1,8 +1,8 @@
-import { Messages, StatusCode } from '../constants'
-import { Exception } from '../helpers'
-import { Psychologist, User } from '../models'
-import { PsyTypes } from '../types'
-import { getValidation, registerPsyValidation } from '../validations'
+import { Messages, StatusCode } from "../constants"
+import { Exception } from "../helpers"
+import { Psychologist, User } from "../models"
+import { PsyTypes } from "../types"
+import { getValidation, registerPsyValidation } from "../validations"
 
 export namespace PsyService {
   export const get = async (params: PsyTypes.get) => {
@@ -10,11 +10,12 @@ export namespace PsyService {
       const { id, page, perPage } = getValidation.parse(params)
 
       const [psychologists, total] = await Promise.all([
-        Psychologist.find(id ? { _id: id } : {}, null, {
+        await Psychologist.find(id ? { _id: id } : {}, null, {
           skip: Number((page! - 1) * perPage!) || 0,
           limit: Number(perPage) || 10,
-        }),
-        Psychologist.count(id ? { _id: id } : {}),
+        }).populate('patients').exec(),
+
+        await Psychologist.count(id ? { _id: id } : {}),
       ])
 
       if (!psychologists) {
@@ -40,11 +41,11 @@ export namespace PsyService {
       ])
 
       if (!userExist) {
-        throw new Exception.AppError(StatusCode.BAD_REQUEST, ['USER NOT FOUND'])
+        throw new Exception.AppError(StatusCode.BAD_REQUEST, ["USER NOT FOUND"])
       }
 
       if (psyExist) {
-        throw new Exception.AppError(StatusCode.BAD_REQUEST, ['REGISTER EXISTS'])
+        throw new Exception.AppError(StatusCode.BAD_REQUEST, ["REGISTER EXISTS"])
       }
 
       const newPsy = await Psychologist.create({

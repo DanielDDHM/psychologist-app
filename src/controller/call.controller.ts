@@ -1,6 +1,6 @@
-import { Request, Response } from 'express'
-import { StatusCode } from '../constants'
-import { CallService } from '../services'
+import { Request, Response } from "express"
+import { StatusCode } from "../constants"
+import { CallService } from "../services"
 
 export namespace CallController {
   export const get = async (req: Request, res: Response) => {

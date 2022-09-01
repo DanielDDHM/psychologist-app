@@ -1,9 +1,9 @@
-import { model, Schema } from 'mongoose'
-import { CallModelsTypes } from '../types/models'
+import { model, Schema } from "mongoose"
+import { CallModelsTypes } from "../types/models"
 
 const CallSchema: Schema = new Schema({
-  patient: { type: Schema.Types.ObjectId, ref: 'Patient', required: true },
-  psychologist: { type: Schema.Types.ObjectId, ref: 'Psychologist' },
+  patient: { type: Schema.Types.ObjectId, ref: "Patient", required: true },
+  psychologist: { type: Schema.Types.ObjectId, ref: "Psychologist" },
   startDate: { type: Date, required: true },
   endDate: { type: Date },
   Room: { type: Object },
@@ -16,7 +16,7 @@ const CallSchema: Schema = new Schema({
   updatedAt: { type: Date, required: false },
 })
 
-CallSchema.pre('save', function (next) {
+CallSchema.pre("save", function (next) {
   const now = new Date()
   if (!this.updatedAt) {
     this.updatedAt = now
@@ -24,4 +24,4 @@ CallSchema.pre('save', function (next) {
   next()
 })
 
-export default model<CallModelsTypes.Call>('Calls', CallSchema)
+export default model<CallModelsTypes.Call>("Calls", CallSchema)

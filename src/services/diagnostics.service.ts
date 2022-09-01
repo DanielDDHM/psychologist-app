@@ -1,5 +1,5 @@
-import { StatusCode } from '../constants'
-import { Exception } from '../helpers'
+import { StatusCode } from "../constants"
+import { Exception } from "../helpers"
 
 export namespace DiagnosticService {
   export const get = async (params: any) => {

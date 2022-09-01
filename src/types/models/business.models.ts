@@ -1,4 +1,4 @@
-import { DefaultModelsTypes } from './default.models'
+import { DefaultModelsTypes } from "./default.models"
 
 export namespace BusinessModelsTypes {
   export interface Schedule extends DefaultModelsTypes.register {
