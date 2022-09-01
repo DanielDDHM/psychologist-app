@@ -14,7 +14,6 @@
     "docker:up": "docker-compose -f docker-compose.test.yml up -d",
     "docker:down": "docker-compose down",
     "prepare": "husky install",
-    "painel": "sh ./scripts/prompt.sh",
     "prettier": "prettier --write .",
     "test": "cross-env DATABASE_URL_TEST='mongodb+srv://admin:admin@cluster0.pmai4kp.mongodb.net/psy-app?retryWrites=true&w=majority' jest -i --verbose"
   },

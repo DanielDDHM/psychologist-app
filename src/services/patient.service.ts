@@ -1,6 +1,7 @@
 import { Messages, StatusCode } from '../constants'
 import { Exception } from '../helpers'
 import { Patient, Psychologist, User } from '../models'
+import { patientModelType } from '../models/patient'
 import { PatientTypes } from '../types'
 import { getValidation, registerPatientValidation } from '../validations'
 
@@ -34,11 +35,12 @@ export namespace PatientService {
     try {
       const { user, psychologist } = registerPatientValidation.parse(params)
 
-      const [userExist, patientExist, psyExist] = await Promise.all([
+      const [userExist, patientExist] = await Promise.all([
         await User.findById({ _id: user }),
         await Patient.findOne({ user }),
-        await Psychologist.findById({ _id: psychologist }),
       ])
+
+      const psyExist: patientModelType | null = await Psychologist.findById({ _id: psychologist })
 
       if (!userExist || !psyExist) {
         throw new Exception.AppError(StatusCode.BAD_REQUEST, ['USER NOT FOUND'])
@@ -48,13 +50,11 @@ export namespace PatientService {
         throw new Exception.AppError(StatusCode.BAD_REQUEST, ['PATIENT EXIST'])
       }
 
-      // const psy = psyExist?.user.valueOf()
+      const psy = psyExist?.user.valueOf()
 
-      // if (user === psy) {
-      //   throw new Exception.AppError(
-      //     StatusCode.BAD_REQUEST,
-      //     ['PATIENT AND PSY CANNOT BE THE SAME'])
-      // }
+      if (user === psy) {
+        throw new Exception.AppError(StatusCode.BAD_REQUEST, ['PATIENT AND PSY CANNOT BE THE SAME'])
+      }
 
       const newPatient = await Patient.create({
         user,
