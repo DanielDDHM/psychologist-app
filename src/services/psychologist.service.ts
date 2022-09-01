@@ -13,7 +13,7 @@ export namespace PsyService {
         await Psychologist.find(id ? { _id: id } : {}, null, {
           skip: Number((page! - 1) * perPage!) || 0,
           limit: Number(perPage) || 10,
-        }).populate('patients').exec(),
+        }),
 
         await Psychologist.count(id ? { _id: id } : {}),
       ])

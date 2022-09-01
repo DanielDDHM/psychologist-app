@@ -61,7 +61,12 @@ export namespace PatientService {
         psychologist,
       })
 
-      newPatient ? await Psychologist.findByIdAndUpdate({ _id: psychologist }, { $push: { patients: newPatient._id } }) : null
+      newPatient
+        ? await Psychologist.findByIdAndUpdate(
+            { _id: psychologist },
+            { $push: { patients: newPatient._id } },
+          )
+        : null
 
       return newPatient
     } catch (e: any) {
