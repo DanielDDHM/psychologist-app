@@ -7,16 +7,12 @@ export namespace PasswordGenerator {
       const encryptPass = await bcrypt.hash(pass, salt)
 
       if (!encryptPass) {
-        throw new Exception.AppError(
-          StatusCode.FAILED_DEPENDENCY,
-          [Messages.Auth.CRYPT_PASS_FAIL])
+        throw new Exception.AppError(StatusCode.FAILED_DEPENDENCY, [Messages.Auth.CRYPT_PASS_FAIL])
       }
 
       return encryptPass
     } catch (error) {
-      throw new Exception.AppError(
-        StatusCode.FAILED_DEPENDENCY,
-        [Messages.Auth.CRYPT_PASS_FAIL])
+      throw new Exception.AppError(StatusCode.FAILED_DEPENDENCY, [Messages.Auth.CRYPT_PASS_FAIL])
     }
   }
 
@@ -25,15 +21,12 @@ export namespace PasswordGenerator {
       const comparePass = await bcrypt.compare(pass, userPass)
 
       if (!comparePass) {
-        throw new Exception.AppError(StatusCode.BAD_REQUEST,
-          [Messages.Auth.CRYPT_PASS_FAIL])
+        throw new Exception.AppError(StatusCode.BAD_REQUEST, [Messages.Auth.CRYPT_PASS_FAIL])
       }
 
       return comparePass
     } catch (error: any) {
-      throw new Exception.AppError(
-        StatusCode.INTERNAL_SERVER_ERROR,
-        error.message)
+      throw new Exception.AppError(StatusCode.INTERNAL_SERVER_ERROR, error.message)
     }
   }
 }

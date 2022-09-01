@@ -1,10 +1,10 @@
-import { z } from "zod"
+import { z } from 'zod'
 import {
   createUserValidation,
   updateUserValidation,
   getValidation,
-  idValidation
-} from "../validations"
+  idValidation,
+} from '../validations'
 
 export namespace UsersTypes {
   export type get = z.infer<typeof getValidation>

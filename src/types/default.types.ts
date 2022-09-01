@@ -4,13 +4,12 @@ export namespace DefaultTypes {
     POST = 'POST',
     PUT = 'PUT',
     PATCH = 'PATCH',
-    DELETE = 'DELETE'
+    DELETE = 'DELETE',
   }
 
   export enum UserTypes {
     ADMIN = 'QURNSU4=',
     USER = 'VVNFUg==',
-    OWNER = 'T1dORVI='
+    OWNER = 'T1dORVI=',
   }
 }
-

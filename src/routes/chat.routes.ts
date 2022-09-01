@@ -1,7 +1,7 @@
-import { Router } from 'express';
-import { ChatController } from '../controller';
+import { Router } from 'express'
+import { ChatController } from '../controller'
 
-const router = Router();
+const router = Router()
 
 router
   .get('/:id', ChatController.get)

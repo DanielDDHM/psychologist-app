@@ -1,7 +1,7 @@
-import { Router } from 'express';
-import { DiagnosticController } from '../controller';
+import { Router } from 'express'
+import { DiagnosticController } from '../controller'
 
-const router = Router();
+const router = Router()
 
 router
   .get('/:id?', DiagnosticController.get)

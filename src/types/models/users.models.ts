@@ -1,9 +1,8 @@
-import { DefaultModelsTypes } from "./default.models"
+import { DefaultModelsTypes } from './default.models'
 
 export namespace UsersModelsTypes {
-
   export interface Psychologist extends DefaultModelsTypes.register {
-    about: string,
+    about: string
     patient: Array<Patient>
   }
   export interface Mood extends DefaultModelsTypes.register {
@@ -15,8 +14,8 @@ export namespace UsersModelsTypes {
   }
 
   export interface Diagnosis extends DefaultModelsTypes.register {
-    patient: string,
-    isActive: boolean,
+    patient: string
+    isActive: boolean
     diagnosis: string
   }
 }

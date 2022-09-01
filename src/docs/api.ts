@@ -1,19 +1,19 @@
 export namespace Documentation {
   export const Api = {
-    openapi: "3.0.3",
+    openapi: '3.0.3',
     info: {
-      title: "PSY",
-      description: "PsyApp",
-      version: "1.0.0",
+      title: 'PSY',
+      description: 'PsyApp',
+      version: '1.0.0',
       contact: {
-        email: "daniel.ddhm@gmail.com",
+        email: 'daniel.ddhm@gmail.com',
       },
     },
     servers: [
       {
         url: 'http://localhost:3000/',
         description: 'Local Server',
-      }
+      },
     ],
     tags: [
       { name: 'Auth' },

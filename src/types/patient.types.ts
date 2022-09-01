@@ -1,8 +1,5 @@
-import { z } from "zod"
-import {
-  getValidation,
-  registerPatientValidation
-} from "../validations"
+import { z } from 'zod'
+import { getValidation, registerPatientValidation } from '../validations'
 
 export namespace PatientTypes {
   export type register = z.infer<typeof registerPatientValidation>

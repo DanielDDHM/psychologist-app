@@ -1,4 +1,4 @@
-import { Router } from "express";
+import { Router } from 'express'
 
 import authRoutes from './auth.routes'
 import callRoutes from './call.routes'
@@ -9,7 +9,7 @@ import usersRoutes from './users.routes'
 import psyRoutes from './psychologist.routes'
 import patRoutes from './patient.routes'
 
-const routes = Router();
+const routes = Router()
 
 routes
   .use('/auth', authRoutes)

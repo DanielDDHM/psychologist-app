@@ -1,12 +1,14 @@
-import { Request, Response } from "express"
-import { PsyService } from "../services"
-import { StatusCode } from "../constants"
-import { PsyTypes } from "../types"
+import { Request, Response } from 'express'
+import { PsyService } from '../services'
+import { StatusCode } from '../constants'
+import { PsyTypes } from '../types'
 
 export namespace PsyController {
-
   export const get = async (req: Request, res: Response) => {
-    const { params: { id }, query } = req
+    const {
+      params: { id },
+      query,
+    } = req
     try {
       const users = await PsyService.get({ id, ...query } as PsyTypes.get)
       return res.status(StatusCode.OK).send(users)

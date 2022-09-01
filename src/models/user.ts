@@ -1,6 +1,6 @@
 /* eslint-disable no-useless-escape */
-import { model, Schema } from "mongoose";
-import { DefaultModelsTypes } from "../types/models";
+import { model, Schema } from 'mongoose'
+import { DefaultModelsTypes } from '../types/models'
 
 const UserSchema: Schema = new Schema({
   name: { type: String, required: true },
@@ -10,7 +10,7 @@ const UserSchema: Schema = new Schema({
     trim: true,
     unique: true,
     lowercase: true,
-    match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'INVALID EMAIL']
+    match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'INVALID EMAIL'],
   },
   password: { type: String, required: true },
   phone: { type: String, required: false },
@@ -25,21 +25,20 @@ const UserSchema: Schema = new Schema({
     city: { type: String },
     state: { type: String },
     country: { type: String },
-    required: false
+    required: false,
   },
   isActive: { type: Boolean, required: false, default: true },
   isConfirmed: { type: Boolean, required: false, default: false },
   createdAt: { type: Date, required: false, default: Date.now },
-  updatedAt: { type: Date, required: false }
+  updatedAt: { type: Date, required: false },
 })
 
-UserSchema.pre("save", function (next) {
-  const now = new Date();
+UserSchema.pre('save', function (next) {
+  const now = new Date()
   if (!this.updatedAt) {
-    this.updatedAt = now;
+    this.updatedAt = now
   }
-  next();
-});
+  next()
+})
 
-export default model<DefaultModelsTypes.users>(
-  "User", UserSchema)
+export default model<DefaultModelsTypes.users>('User', UserSchema)

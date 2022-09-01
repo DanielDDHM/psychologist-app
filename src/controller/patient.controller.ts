@@ -1,12 +1,14 @@
-import { Request, Response } from "express"
-import { StatusCode } from "../constants"
-import { PatientService } from "../services"
-import { PatientTypes } from "../types"
+import { Request, Response } from 'express'
+import { StatusCode } from '../constants'
+import { PatientService } from '../services'
+import { PatientTypes } from '../types'
 
 export namespace PatientController {
-
   export const get = async (req: Request, res: Response) => {
-    const { params: { id }, query } = req
+    const {
+      params: { id },
+      query,
+    } = req
     try {
       const users = await PatientService.get({ id, ...query } as PatientTypes.get)
       return res.status(StatusCode.OK).send(users)

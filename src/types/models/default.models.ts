@@ -1,33 +1,33 @@
 export namespace DefaultModelsTypes {
   export interface register {
-    createdAt: Date,
+    createdAt: Date
     updatedAt: Date
   }
   export interface users extends register {
-    name: string,
-    email: string,
-    password: string,
-    photo: string,
-    role: string,
-    birthdate: string,
-    phone: string,
-    address: Address,
-    isActive: boolean,
+    name: string
+    email: string
+    password: string
+    photo: string
+    role: string
+    birthdate: string
+    phone: string
+    address: Address
+    isActive: boolean
     isConfirmed: boolean
   }
   export interface Call extends register {
-    patient: string,
-    psychologist: string,
-    startDate: Date,
-    endDate: Date,
-    Status: object,
-    rating: number,
-    finished: boolean,
+    patient: string
+    psychologist: string
+    startDate: Date
+    endDate: Date
+    Status: object
+    rating: number
+    finished: boolean
   }
 
   export interface Library extends register {
-    category: string,
-    type: string,
+    category: string
+    type: string
     image: string
     video: string
     audio: string
@@ -39,13 +39,12 @@ export namespace DefaultModelsTypes {
   }
 
   export interface Address {
-    zipCode: string,
-    streetNumber: number,
-    street: string,
-    neighborhood: string,
-    city: string,
-    state: string,
+    zipCode: string
+    streetNumber: number
+    street: string
+    neighborhood: string
+    city: string
+    state: string
     country: string
   }
-
 }

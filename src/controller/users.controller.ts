@@ -1,11 +1,14 @@
-import { Request, Response } from "express";
-import { StatusCode } from "../constants";
-import { UsersService } from "../services/users.service";
-import { UsersTypes } from "../types";
+import { Request, Response } from 'express'
+import { StatusCode } from '../constants'
+import { UsersService } from '../services/users.service'
+import { UsersTypes } from '../types'
 
 export namespace UserController {
   export const get = async (req: Request, res: Response) => {
-    const { params: { id }, query } = req
+    const {
+      params: { id },
+      query,
+    } = req
     try {
       const users = await UsersService.get({ id, ...query } as UsersTypes.get)
       return res.status(StatusCode.OK).send(users)
@@ -25,7 +28,10 @@ export namespace UserController {
   }
 
   export const update = async (req: Request, res: Response) => {
-    const { params: { id }, body } = req
+    const {
+      params: { id },
+      body,
+    } = req
     try {
       const user = await UsersService.update({ id, ...body } as UsersTypes.update)
       return res.status(StatusCode.OK).send(user)
@@ -35,7 +41,9 @@ export namespace UserController {
   }
 
   export const confirm = async (req: Request, res: Response) => {
-    const { params: { id } } = req
+    const {
+      params: { id },
+    } = req
     try {
       const user = await UsersService.confirm({ id } as UsersTypes.idOnly)
       return res.status(StatusCode.OK).send(user)
@@ -45,7 +53,9 @@ export namespace UserController {
   }
 
   export const activate = async (req: Request, res: Response) => {
-    const { params: { id } } = req
+    const {
+      params: { id },
+    } = req
     try {
       const user = await UsersService.activate({ id } as UsersTypes.idOnly)
       return res.status(StatusCode.OK).send(user)
@@ -55,7 +65,9 @@ export namespace UserController {
   }
 
   export const destroy = async (req: Request, res: Response) => {
-    const { params: { id } } = req
+    const {
+      params: { id },
+    } = req
     try {
       const user = await UsersService.destroy({ id } as UsersTypes.idOnly)
       return res.status(StatusCode.OK).send(user)
@@ -73,5 +85,4 @@ export namespace UserController {
       res.status(error?.statusCode).send(error?.messages)
     }
   }
-
 }
