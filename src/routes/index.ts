@@ -16,7 +16,7 @@ routes
   .use("/call", callRoutes)
   .use("/chat", chatRoutes)
   .use("/message", messageRoutes)
-  .use("/diagnostics", diagnosticRoutes)
+  .use("/diag", diagnosticRoutes)
   .use("/users", usersRoutes)
   .use("/psy", psyRoutes)
   .use("/pat", patRoutes)

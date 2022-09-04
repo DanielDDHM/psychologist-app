@@ -18,7 +18,7 @@ export namespace PatientService {
         Patient.count(id ? { _id: id } : {}),
       ])
 
-      if (!patients) {
+      if (!patients || total === 0) {
         throw new Exception.AppError(StatusCode.BAD_REQUEST, [DefaultMessages.StatusMessage.NOT_FOUND])
       }
 

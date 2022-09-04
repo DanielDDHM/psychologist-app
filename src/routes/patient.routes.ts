@@ -3,5 +3,7 @@ import { PatientController } from "../controller"
 
 const router = Router()
 
-router.get("/:id?", PatientController.get).post("/", PatientController.register)
+router
+    .get("/:id?", PatientController.get)
+    .post("/", PatientController.register)
 export default router

@@ -15,11 +15,12 @@ export namespace UsersModelsTypes {
   export interface Patient extends DefaultModelsTypes.register {
     user: Types.ObjectId
     psychologist: Types.ObjectId
+    diagnosis: Array<Diagnosis>
+    mood: Array<any>
   }
 
   export interface Diagnosis extends DefaultModelsTypes.register {
     patient: string
-    isActive: boolean
     diagnosis: string
   }
 }

@@ -3,5 +3,7 @@ import { PsyController } from "../controller"
 
 const router = Router()
 
-router.get("/:id?", PsyController.get).post("/", PsyController.register)
+router
+    .get("/:id?", PsyController.get)
+    .post("/", PsyController.register)
 export default router
