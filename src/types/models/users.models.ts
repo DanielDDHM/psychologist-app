@@ -20,7 +20,7 @@ export namespace UsersModelsTypes {
   }
 
   export interface Diagnosis extends DefaultModelsTypes.register {
-    patient: string
+    patient: Types.ObjectId
     diagnosis: string
   }
 }

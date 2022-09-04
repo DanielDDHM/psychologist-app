@@ -18,7 +18,10 @@ export namespace DiagnosticController {
 
   export const post = async (req: Request, res: Response) => {
     try {
-      const { params: { id }, body } = req
+      const {
+        params: { id },
+        body,
+      } = req
       const consult = await DiagnosticService.post({ id, ...body } as DiagnosisTypes.post)
       return res.status(StatusCode.OK).send(consult)
     } catch (error: any) {

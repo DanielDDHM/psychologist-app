@@ -6,9 +6,7 @@ import { ChatTypes, MessageTypes } from "../types/chat.types"
 export namespace ChatController {
   export const get = async (req: Request, res: Response) => {
     try {
-      const {
-        query
-      } = req
+      const { query } = req
       const chat = await ChatService.get(query as ChatTypes.get)
       return res.status(StatusCode.OK).send(chat)
     } catch (error: any) {
@@ -77,10 +75,11 @@ export namespace ChatController {
 }
 
 export namespace MessageController {
-
   export const get = async (req: Request, res: Response) => {
     try {
-      const { params: { id } } = req
+      const {
+        params: { id },
+      } = req
       const message = await MessageService.get({ id } as MessageTypes.get)
       return res.status(StatusCode.OK).send(message)
     } catch (error: any) {
@@ -90,7 +89,10 @@ export namespace MessageController {
 
   export const post = async (req: Request, res: Response) => {
     try {
-      const { params: { id }, body: { message, sentBy } } = req
+      const {
+        params: { id },
+        body: { message, sentBy },
+      } = req
       const messageSend = await MessageService.post({ id, message, sentBy } as MessageTypes.post)
       return res.status(StatusCode.OK).send(messageSend)
     } catch (error: any) {
@@ -100,7 +102,9 @@ export namespace MessageController {
 
   export const destroy = async (req: Request, res: Response) => {
     try {
-      const { query: { id } } = req
+      const {
+        query: { id },
+      } = req
       const messageDeleted = await MessageService.destroy({ id } as MessageTypes.destroy)
       return res.status(StatusCode.OK).send(messageDeleted)
     } catch (error: any) {

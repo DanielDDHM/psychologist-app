@@ -23,7 +23,9 @@ export namespace UsersService {
       ])
 
       if (!users || users.length === 0) {
-        throw new Exception.AppError(StatusCode.BAD_REQUEST, [DefaultMessages.StatusMessage.NOT_FOUND])
+        throw new Exception.AppError(StatusCode.BAD_REQUEST, [
+          DefaultMessages.StatusMessage.NOT_FOUND,
+        ])
       }
 
       return { users, total }

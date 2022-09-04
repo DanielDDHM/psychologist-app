@@ -7,7 +7,8 @@ import diagnosticRoutes from "./diagnostics.routes"
 import usersRoutes from "./users.routes"
 import psyRoutes from "./psychologist.routes"
 import patRoutes from "./patient.routes"
-import messageRoutes from './message.routes'
+import messageRoutes from "./message.routes"
+import moodRoutes from "./mood.routes"
 
 const routes = Router()
 
@@ -20,5 +21,6 @@ routes
   .use("/users", usersRoutes)
   .use("/psy", psyRoutes)
   .use("/pat", patRoutes)
+  .use("/mood", moodRoutes)
 
 export default routes

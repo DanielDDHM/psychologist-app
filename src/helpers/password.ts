@@ -7,12 +7,16 @@ export namespace PasswordGenerator {
       const encryptPass = await bcrypt.hash(pass, salt)
 
       if (!encryptPass) {
-        throw new Exception.AppError(StatusCode.FAILED_DEPENDENCY, [DefaultMessages.Auth.CRYPT_PASS_FAIL])
+        throw new Exception.AppError(StatusCode.FAILED_DEPENDENCY, [
+          DefaultMessages.Auth.CRYPT_PASS_FAIL,
+        ])
       }
 
       return encryptPass
     } catch (error) {
-      throw new Exception.AppError(StatusCode.FAILED_DEPENDENCY, [DefaultMessages.Auth.CRYPT_PASS_FAIL])
+      throw new Exception.AppError(StatusCode.FAILED_DEPENDENCY, [
+        DefaultMessages.Auth.CRYPT_PASS_FAIL,
+      ])
     }
   }
 

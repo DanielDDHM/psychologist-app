@@ -11,5 +11,4 @@ router
   .put("/review", ChatController.review)
   .delete("/", ChatController.destroy)
 
-
 export default router

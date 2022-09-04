@@ -6,4 +6,4 @@ export { default as Patient } from "./patient"
 export { default as Psychologist } from "./psychologist"
 export { default as Schedule } from "./schedule"
 export { default as User } from "./user"
-export { default as Messages } from './message'
+export { default as Messages } from "./message"

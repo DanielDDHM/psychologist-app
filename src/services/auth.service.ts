@@ -9,7 +9,8 @@ export namespace AuthService {
     const { email, password } = payload
 
     const user = await User.findOne({ email })
-    if (!user) throw new Exception.AppError(StatusCode.NOT_FOUND, [DefaultMessages.Auth.MISSING_TOKEN])
+    if (!user)
+      throw new Exception.AppError(StatusCode.NOT_FOUND, [DefaultMessages.Auth.MISSING_TOKEN])
 
     const passMatch = await PasswordGenerator.compare(password, user?.password!)
 

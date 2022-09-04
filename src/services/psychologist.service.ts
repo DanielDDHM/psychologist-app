@@ -19,7 +19,9 @@ export namespace PsyService {
       ])
 
       if (!psychologists) {
-        throw new Exception.AppError(StatusCode.BAD_REQUEST, [DefaultMessages.StatusMessage.NOT_FOUND])
+        throw new Exception.AppError(StatusCode.BAD_REQUEST, [
+          DefaultMessages.StatusMessage.NOT_FOUND,
+        ])
       }
 
       return { psychologists, total }
