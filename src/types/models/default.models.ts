@@ -22,20 +22,8 @@ export namespace DefaultModelsTypes {
     endDate: Date
     Status: object
     rating: number
+    started: boolean
     finished: boolean
-  }
-
-  export interface Library extends register {
-    category: string
-    type: string
-    image: string
-    video: string
-    audio: string
-    name: string
-    description: string
-    published: boolean
-    publishSchedule: boolean
-    publishScheduleDate: Date
   }
 
   export interface Address {
@@ -46,5 +34,15 @@ export namespace DefaultModelsTypes {
     city: string
     state: string
     country: string
+  }
+
+  export interface Message extends register {
+    chat: string
+    sentBy: string
+    user: string
+    psychologist: string
+    message: string
+    read: boolean
+    deleted: boolean
   }
 }

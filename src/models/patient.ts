@@ -7,6 +7,8 @@ const PatientSchema: Schema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "Psychologist",
   },
+  diagnostics: [{ type: Schema.Types.ObjectId, ref: "Diagnosis" }],
+  mood: [{ type: Schema.Types.ObjectId, ref: "Mood" }]
 })
 
 PatientSchema.pre("save", function (next) {

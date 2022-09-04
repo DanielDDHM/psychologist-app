@@ -1,4 +1,4 @@
-export namespace Messages {
+export namespace DefaultMessages {
   export enum Auth {
     CRYPT_PASS_FAIL = "ERROR ON CRYPT PASSWORD",
     NOT_STAFF = "YOURE NOT A STAFF",

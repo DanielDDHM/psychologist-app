@@ -1,4 +1,4 @@
-import { Messages, StatusCode } from "../constants"
+import { DefaultMessages, StatusCode } from "../constants"
 import { Exception } from "../helpers"
 import { Psychologist, User } from "../models"
 import { PsyTypes } from "../types"
@@ -19,7 +19,7 @@ export namespace PsyService {
       ])
 
       if (!psychologists) {
-        throw new Exception.AppError(StatusCode.BAD_REQUEST, [Messages.StatusMessage.NOT_FOUND])
+        throw new Exception.AppError(StatusCode.BAD_REQUEST, [DefaultMessages.StatusMessage.NOT_FOUND])
       }
 
       return { psychologists, total }

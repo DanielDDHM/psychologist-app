@@ -1,4 +1,4 @@
-import { Messages, StatusCode } from "../constants"
+import { DefaultMessages, StatusCode } from "../constants"
 import { AddressGenerator, Exception } from "../helpers"
 import { User } from "../models"
 import { DefaultTypes, UsersTypes } from "../types"
@@ -23,7 +23,7 @@ export namespace UsersService {
       ])
 
       if (!users || users.length === 0) {
-        throw new Exception.AppError(StatusCode.BAD_REQUEST, [Messages.StatusMessage.NOT_FOUND])
+        throw new Exception.AppError(StatusCode.BAD_REQUEST, [DefaultMessages.StatusMessage.NOT_FOUND])
       }
 
       return { users, total }
@@ -42,7 +42,7 @@ export namespace UsersService {
 
       const emailExist = await User.findOne({ email })
       if (emailExist) {
-        throw new Exception.AppError(StatusCode.BAD_REQUEST, [Messages.User.USER_EXIST])
+        throw new Exception.AppError(StatusCode.BAD_REQUEST, [DefaultMessages.User.USER_EXIST])
       }
 
       const newAddress = await AddressGenerator.address(address.zipCode, address.streetNumber)
@@ -91,7 +91,7 @@ export namespace UsersService {
       )
 
       if (!userUpdated) {
-        throw new Exception.AppError(StatusCode.BAD_REQUEST, [Messages.User.NOT_FOUND])
+        throw new Exception.AppError(StatusCode.BAD_REQUEST, [DefaultMessages.User.NOT_FOUND])
       }
 
       return userUpdated
@@ -114,7 +114,7 @@ export namespace UsersService {
       )
 
       if (!userConfirm) {
-        throw new Exception.AppError(StatusCode.BAD_REQUEST, [Messages.User.NOT_FOUND])
+        throw new Exception.AppError(StatusCode.BAD_REQUEST, [DefaultMessages.User.NOT_FOUND])
       }
 
       return userConfirm
@@ -138,7 +138,7 @@ export namespace UsersService {
       )
 
       if (!userActivate) {
-        throw new Exception.AppError(StatusCode.BAD_REQUEST, [Messages.User.NOT_FOUND])
+        throw new Exception.AppError(StatusCode.BAD_REQUEST, [DefaultMessages.User.NOT_FOUND])
       }
 
       return userActivate
@@ -156,7 +156,7 @@ export namespace UsersService {
       const userDeleted = await User.findByIdAndDelete({ _id: id })
 
       if (!userDeleted) {
-        throw new Exception.AppError(StatusCode.BAD_REQUEST, [Messages.User.NOT_FOUND])
+        throw new Exception.AppError(StatusCode.BAD_REQUEST, [DefaultMessages.User.NOT_FOUND])
       }
 
       return userDeleted._id
@@ -177,7 +177,7 @@ export namespace UsersService {
       )
 
       if (!user) {
-        throw new Exception.AppError(StatusCode.BAD_REQUEST, [Messages.User.NOT_FOUND])
+        throw new Exception.AppError(StatusCode.BAD_REQUEST, [DefaultMessages.User.NOT_FOUND])
       }
 
       return user

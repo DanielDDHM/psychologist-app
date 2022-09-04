@@ -3,7 +3,6 @@ import { UsersModelsTypes } from "../types/models"
 
 const DiagnosisSchema: Schema = new Schema({
   patient: { type: Schema.Types.ObjectId, ref: "Patient" },
-  isActive: { type: Boolean, default: false },
   diagnosis: { type: String, required: true },
   createdAt: { type: Date, required: false, default: Date.now },
   updatedAt: { type: Date, required: false },

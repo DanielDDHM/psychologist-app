@@ -1,5 +1,5 @@
 import axios from "axios"
-import { Messages, StatusCode } from "../constants"
+import { DefaultMessages, StatusCode } from "../constants"
 import { Exception } from "./exception"
 
 export namespace AddressGenerator {
@@ -18,7 +18,7 @@ export namespace AddressGenerator {
 
       if (!address) {
         throw new Exception.AppError(StatusCode.SERVICE_UNAVAILABLE, [
-          Messages.others.CPF_API_NOT_WORKING,
+          DefaultMessages.others.CPF_API_NOT_WORKING,
         ])
       }
 

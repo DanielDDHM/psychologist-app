@@ -8,8 +8,8 @@ export namespace CallModelsTypes {
   }
 
   export interface Chat extends DefaultModelsTypes.Call {
-    PsychologistAccepted: boolean
-    PsychologistAcceptedDate: Date
     messages: object
+    avaliation: string
   }
+
 }
