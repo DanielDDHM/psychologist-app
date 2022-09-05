@@ -1,5 +1,5 @@
 import { DefaultMessages, StatusCode } from "../constants"
-import { AddressGenerator, Exception } from "../helpers"
+import { AddressGenerator, Exception, FileHelper } from "../helpers"
 import { User } from "../models"
 import { DefaultTypes, UsersTypes } from "../types"
 import {
@@ -53,7 +53,9 @@ export namespace UsersService {
         name,
         email,
         password,
-        photo,
+        photo: await FileHelper.uploadFile({ file: photo ? photo : "", type: "photo" }).then(
+          res => res.fileLink,
+        ),
         birthdate,
         phone,
         address: newAddress,
@@ -83,7 +85,9 @@ export namespace UsersService {
           name,
           email,
           password,
-          photo,
+          photo: await FileHelper.uploadFile({ file: photo ? photo : "", type: "photo" }).then(
+            res => res.fileLink,
+          ),
           phone,
           birthdate,
           role,
