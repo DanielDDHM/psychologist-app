@@ -1,6 +1,6 @@
 import { Request, Response } from "express"
 import { StatusCode } from "../constants"
-import { UsersService } from "../services/users.service"
+import { UsersService } from "../services"
 import { UsersTypes } from "../types"
 
 export namespace UserController {

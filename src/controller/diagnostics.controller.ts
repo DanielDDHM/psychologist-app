@@ -1,7 +1,7 @@
 import { Request, Response } from "express"
 import { StatusCode } from "../constants"
 import { DiagnosticService } from "../services"
-import { DiagnosisTypes } from "../types/diagnosis.types"
+import { DiagnosisTypes } from "../types"
 
 export namespace DiagnosticController {
   export const get = async (req: Request, res: Response) => {

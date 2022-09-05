@@ -1,7 +1,7 @@
 import { Request, Response } from "express"
 import { StatusCode } from "../constants"
-import { MoodService } from "../services/mood.service"
-import { MoodTypes } from "../types/mood.types"
+import { MoodService } from "../services"
+import { MoodTypes } from "../types"
 
 export namespace MoodController {
   export const get = async (req: Request, res: Response) => {

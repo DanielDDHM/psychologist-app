@@ -1,7 +1,7 @@
 import { DefaultMessages, StatusCode } from "../constants"
 import { Exception } from "../helpers"
 import { Chat, Messages } from "../models"
-import { ChatTypes, MessageTypes } from "../types/chat.types"
+import { ChatTypes, MessageTypes } from "../types"
 import {
   destroyChatValidation,
   destroyMessageValidation,
