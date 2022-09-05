@@ -1,16 +1,16 @@
 import { model, Schema } from "mongoose"
-import { CallModelsTypes } from "../types/models"
+import { CallModelsTypes } from "../types"
 
 const ChatSchema: Schema = new Schema({
   name: { type: String, required: true },
   patient: { type: Schema.Types.ObjectId, ref: "Patient", required: true },
   psychologist: { type: Schema.Types.ObjectId, ref: "Psychologist" },
-  endDate: { type: Date },
   messages: [{ type: Schema.Types.ObjectId, ref: "Messages" }],
-  Status: { type: Object },
+  Status: { type: String },
   started: { type: Boolean, default: false },
   startDate: { type: Date },
   finished: { type: Boolean, default: false },
+  endDate: { type: Date },
   rating: { type: Number },
   avaliation: { type: String },
   createdAt: { type: Date, required: false, default: Date.now },

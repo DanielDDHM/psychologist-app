@@ -1,5 +1,5 @@
 import { model, Schema } from "mongoose"
-import { CallModelsTypes } from "../types/models"
+import { CallModelsTypes } from "../types"
 
 const CallSchema: Schema = new Schema({
   patient: { type: Schema.Types.ObjectId, ref: "Patient", required: true },
@@ -7,9 +7,7 @@ const CallSchema: Schema = new Schema({
   startDate: { type: Date, required: true },
   endDate: { type: Date },
   Room: { type: Object },
-  PsychologistEntered: { type: Boolean, default: false },
-  PsychologistEnteredDate: { type: Date },
-  Status: [{ type: Object }],
+  Status: { type: String },
   rating: { type: Number },
   finished: { type: Boolean, default: false },
   createdAt: { type: Date, required: false, default: Date.now },

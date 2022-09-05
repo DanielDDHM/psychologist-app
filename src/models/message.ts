@@ -1,5 +1,5 @@
 import { model, Schema } from "mongoose"
-import { DefaultModelsTypes } from "../types/models"
+import { DefaultModelsTypes } from "../types"
 
 const MessageSchema: Schema = new Schema({
   chat: { type: Schema.Types.ObjectId, ref: "Chats" },

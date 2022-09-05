@@ -1,6 +1,6 @@
 /* eslint-disable no-useless-escape */
 import { model, Schema } from "mongoose"
-import { DefaultModelsTypes } from "../types/models"
+import { DefaultModelsTypes } from "../types"
 
 const UserSchema: Schema = new Schema({
   name: { type: String, required: true },

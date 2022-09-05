@@ -1,5 +1,5 @@
 import { model, Schema } from "mongoose"
-import { BusinessModelsTypes } from "../types/models"
+import { BusinessModelsTypes } from "../types"
 
 const ScheduleSchema: Schema = new Schema({
   psychologist: { type: Schema.Types.ObjectId, ref: "Psychologist", required: true },

@@ -1,5 +1,5 @@
 import { InferSchemaType, model, Schema } from "mongoose"
-import { UsersModelsTypes } from "../types/models"
+import { UsersModelsTypes } from "../types"
 
 const PatientSchema: Schema = new Schema({
   user: { type: Schema.Types.ObjectId, ref: "User" },

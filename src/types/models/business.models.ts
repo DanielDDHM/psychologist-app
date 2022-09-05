@@ -13,16 +13,9 @@ export namespace BusinessModelsTypes {
   export interface Clinic extends DefaultModelsTypes.register {
     isActive: boolean
     image: string
-    logo: string
     name: string
-    address: string
-    address2: string
-    postalCode: string
-    city: string
-    country: string
-    state: string
+    address: object
     email: string
     phone: string
-    consultationsPerUser: number
   }
 }

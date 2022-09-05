@@ -1,20 +1,17 @@
 import { model, Schema } from "mongoose"
-import { BusinessModelsTypes } from "../types/models"
+import { BusinessModelsTypes } from "../types"
 
 const ClinicSchema: Schema = new Schema({
-  isActive: { type: Boolean, default: true },
-  image: { type: String },
-  logo: { type: String },
   name: { type: String },
-  address: { type: String },
-  address2: { type: String },
-  postalCode: { type: String },
-  city: { type: String },
-  country: { type: String },
-  state: { type: String },
+  image: { type: String },
+  address: { type: Object },
+  isActive: { type: Boolean, default: true },
+  psychologists: [{
+    type: Schema.Types.ObjectId,
+    ref: "Psychologist",
+  }],
   email: { type: String },
   phone: { type: String },
-  consultationsPerUser: { type: Number },
   createdAt: { type: Date, required: false, default: Date.now },
   updatedAt: { type: Date, required: false },
 })
@@ -27,4 +24,4 @@ ClinicSchema.pre("save", function (next) {
   next()
 })
 
-export default model<BusinessModelsTypes.Clinic>("Chats", ClinicSchema)
+export default model<BusinessModelsTypes.Clinic>("Clinic", ClinicSchema)

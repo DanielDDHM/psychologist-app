@@ -1,5 +1,5 @@
 import { model, Schema } from "mongoose"
-import { UsersModelsTypes } from "../types/models"
+import { UsersModelsTypes } from "../types"
 
 const DiagnosisSchema: Schema = new Schema({
   patient: { type: Schema.Types.ObjectId, ref: "Patient" },

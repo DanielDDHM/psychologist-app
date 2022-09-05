@@ -1,9 +1,13 @@
 import { model, Schema } from "mongoose"
-import { UsersModelsTypes } from "../types/models"
+import { UsersModelsTypes } from "../types"
 
 const PsychologistSchema: Schema = new Schema({
   user: { type: Schema.Types.ObjectId, ref: "User" },
   patients: [{ type: Schema.Types.ObjectId, ref: "Patient" }],
+  clinic: {
+    type: Schema.Types.ObjectId,
+    ref: "Clinic",
+  },
   about: { type: String, required: false },
   createdAt: { type: Date, required: false, default: Date.now },
   updatedAt: { type: Date, required: false },
