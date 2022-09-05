@@ -77,9 +77,11 @@ export namespace UserController {
   }
 
   export const makeAdmin = async (req: Request, res: Response) => {
-    const { body } = req
+    const {
+      query: { id },
+    } = req
     try {
-      const user = await UsersService.adminify(body as UsersTypes.idOnly)
+      const user = await UsersService.adminify({ id } as UsersTypes.idOnly)
       return res.status(StatusCode.OK).send(user)
     } catch (error: any) {
       res.status(error?.statusCode).send(error?.messages)

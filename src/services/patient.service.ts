@@ -64,10 +64,13 @@ export namespace PatientService {
       })
 
       newPatient
-        ? await Psychologist.findByIdAndUpdate(
-            { _id: psychologist },
-            { $push: { patients: newPatient._id } },
-          )
+        ? await Promise.all([
+            await Psychologist.findByIdAndUpdate(
+              { _id: psychologist },
+              { $push: { patients: newPatient._id } },
+            ),
+            await User.findByIdAndUpdate({ _id: user }, { $push: { profession: newPatient._id } }),
+          ])
         : null
 
       return newPatient

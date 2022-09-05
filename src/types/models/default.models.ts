@@ -12,6 +12,7 @@ export namespace DefaultModelsTypes {
     birthdate: string
     phone: string
     address: Address
+    profession: Array<any>
     isActive: boolean
     isConfirmed: boolean
   }

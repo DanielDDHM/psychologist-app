@@ -6,10 +6,12 @@ const ClinicSchema: Schema = new Schema({
   image: { type: String },
   address: { type: Object },
   isActive: { type: Boolean, default: true },
-  psychologists: [{
-    type: Schema.Types.ObjectId,
-    ref: "Psychologist",
-  }],
+  psychologists: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Psychologist",
+    },
+  ],
   email: { type: String },
   phone: { type: String },
   createdAt: { type: Date, required: false, default: Date.now },

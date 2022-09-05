@@ -15,7 +15,8 @@ const UserSchema: Schema = new Schema({
   password: { type: String, required: true },
   phone: { type: String, required: false },
   photo: { type: String, required: false },
-  role: { type: String, required: true, default: "VVNFUg==" },
+  role: { type: String, default: "VVNFUg==" },
+  profession: [{ type: Schema.Types.ObjectId, ref: ["Psychologist", "Patient"] }],
   birthdate: { type: Date, required: false },
   address: {
     zipCode: { type: String },

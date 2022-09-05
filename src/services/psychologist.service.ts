@@ -55,6 +55,8 @@ export namespace PsyService {
         about,
       })
 
+      newPsy ? await User.findByIdAndUpdate(user, { $push: { profession: newPsy._id } }) : null
+
       return newPsy
     } catch (e: any) {
       if (e instanceof Exception.AppError) {
