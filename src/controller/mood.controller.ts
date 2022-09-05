@@ -18,7 +18,8 @@ export namespace MoodController {
 
   export const post = async (req: Request, res: Response) => {
     const {
-      query: { id, mood },
+      params: { id },
+      body: { mood },
     } = req
     try {
       const mod = await MoodService.post({ id, mood } as MoodTypes.post)
@@ -30,10 +31,11 @@ export namespace MoodController {
 
   export const edit = async (req: Request, res: Response) => {
     const {
-      query: { id, mood },
+      params: { id },
+      body: { mood },
     } = req
     try {
-      const mod = await MoodService.get({ id, mood } as MoodTypes.edit)
+      const mod = await MoodService.edit({ id, mood } as MoodTypes.edit)
       return res.status(StatusCode.OK).send(mod)
     } catch (error: any) {
       res.status(error?.statusCode).send(error?.messages)
@@ -45,7 +47,7 @@ export namespace MoodController {
       query: { id },
     } = req
     try {
-      const mood = await MoodService.get({ id } as MoodTypes.destroy)
+      const mood = await MoodService.destroy({ id } as MoodTypes.destroy)
       return res.status(StatusCode.OK).send(mood)
     } catch (error: any) {
       res.status(error?.statusCode).send(error?.messages)

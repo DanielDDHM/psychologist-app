@@ -33,7 +33,7 @@ export namespace UsersService {
       if (e instanceof Exception.AppError) {
         throw new Exception.AppError(e?.statusCode, e?.messages)
       }
-      throw new Exception.AppError(StatusCode.INTERNAL_SERVER_ERROR, [e?.message])
+      throw new Exception.AppError(StatusCode.INTERNAL_SERVER_ERROR, [e])
     }
   }
 
@@ -68,7 +68,7 @@ export namespace UsersService {
       if (e instanceof Exception.AppError) {
         throw new Exception.AppError(e?.statusCode, e?.messages)
       }
-      throw new Exception.AppError(StatusCode.INTERNAL_SERVER_ERROR, [e?.message])
+      throw new Exception.AppError(StatusCode.INTERNAL_SERVER_ERROR, [e])
     }
   }
 
@@ -101,7 +101,7 @@ export namespace UsersService {
       if (e instanceof Exception.AppError) {
         throw new Exception.AppError(e?.statusCode, e?.messages)
       }
-      throw new Exception.AppError(StatusCode.INTERNAL_SERVER_ERROR, [e?.message])
+      throw new Exception.AppError(StatusCode.INTERNAL_SERVER_ERROR, [e])
     }
   }
 
@@ -124,7 +124,7 @@ export namespace UsersService {
       if (e instanceof Exception.AppError) {
         throw new Exception.AppError(e?.statusCode, e?.messages)
       }
-      throw new Exception.AppError(StatusCode.INTERNAL_SERVER_ERROR, [e?.message])
+      throw new Exception.AppError(StatusCode.INTERNAL_SERVER_ERROR, [e])
     }
   }
 
@@ -148,7 +148,7 @@ export namespace UsersService {
       if (e instanceof Exception.AppError) {
         throw new Exception.AppError(e?.statusCode, e?.messages)
       }
-      throw new Exception.AppError(StatusCode.INTERNAL_SERVER_ERROR, [e?.message])
+      throw new Exception.AppError(StatusCode.INTERNAL_SERVER_ERROR, [e])
     }
   }
 
@@ -166,7 +166,7 @@ export namespace UsersService {
       if (e instanceof Exception.AppError) {
         throw new Exception.AppError(e?.statusCode, e?.messages)
       }
-      throw new Exception.AppError(StatusCode.INTERNAL_SERVER_ERROR, [e?.message])
+      throw new Exception.AppError(StatusCode.INTERNAL_SERVER_ERROR, [e])
     }
   }
   export const adminify = async (params: UsersTypes.idOnly) => {
@@ -187,7 +187,7 @@ export namespace UsersService {
       if (e instanceof Exception.AppError) {
         throw new Exception.AppError(e?.statusCode, e?.messages)
       }
-      throw new Exception.AppError(StatusCode.INTERNAL_SERVER_ERROR, [e?.message])
+      throw new Exception.AppError(StatusCode.INTERNAL_SERVER_ERROR, [e])
     }
   }
 }

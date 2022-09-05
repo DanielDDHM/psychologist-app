@@ -14,7 +14,7 @@ export namespace PatientService {
         Patient.find(id ? { _id: id } : {}, null, {
           skip: Number((page! - 1) * perPage!) || 0,
           limit: Number(perPage) || 10,
-        }),
+        }).populate(["diagnosis", "mood"]),
         Patient.count(id ? { _id: id } : {}),
       ])
 
@@ -29,7 +29,7 @@ export namespace PatientService {
       if (e instanceof Exception.AppError) {
         throw new Exception.AppError(e?.statusCode, e?.messages)
       }
-      throw new Exception.AppError(StatusCode.INTERNAL_SERVER_ERROR, [e?.message])
+      throw new Exception.AppError(StatusCode.INTERNAL_SERVER_ERROR, [e])
     }
   }
 
@@ -75,7 +75,7 @@ export namespace PatientService {
       if (e instanceof Exception.AppError) {
         throw new Exception.AppError(e?.statusCode, e?.messages)
       }
-      throw new Exception.AppError(StatusCode.INTERNAL_SERVER_ERROR, [e?.message])
+      throw new Exception.AppError(StatusCode.INTERNAL_SERVER_ERROR, [e])
     }
   }
 }

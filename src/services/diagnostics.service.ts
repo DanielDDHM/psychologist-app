@@ -32,7 +32,7 @@ export namespace DiagnosticService {
       if (e instanceof Exception.AppError) {
         throw new Exception.AppError(e?.statusCode, e?.messages)
       }
-      throw new Exception.AppError(StatusCode.INTERNAL_SERVER_ERROR, [e?.message])
+      throw new Exception.AppError(StatusCode.INTERNAL_SERVER_ERROR, [e])
     }
   }
 
@@ -58,7 +58,7 @@ export namespace DiagnosticService {
       if (e instanceof Exception.AppError) {
         throw new Exception.AppError(e?.statusCode, e?.messages)
       }
-      throw new Exception.AppError(StatusCode.INTERNAL_SERVER_ERROR, [e?.message])
+      throw new Exception.AppError(StatusCode.INTERNAL_SERVER_ERROR, [e])
     }
   }
 
@@ -83,7 +83,7 @@ export namespace DiagnosticService {
       if (e instanceof Exception.AppError) {
         throw new Exception.AppError(e?.statusCode, e?.messages)
       }
-      throw new Exception.AppError(StatusCode.INTERNAL_SERVER_ERROR, [e?.message])
+      throw new Exception.AppError(StatusCode.INTERNAL_SERVER_ERROR, [e])
     }
   }
 
@@ -91,14 +91,18 @@ export namespace DiagnosticService {
     try {
       const { id } = destroyDiagnosisValidation.parse(params)
 
-      await Diagnosis.findByIdAndDelete(id)
+      const deleted = await Diagnosis.findByIdAndDelete(id)
+
+      deleted
+        ? await Patient.findByIdAndUpdate({ _id: deleted.patient }, { $pull: { diagnosis: id } })
+        : null
 
       return "OK"
     } catch (e: any) {
       if (e instanceof Exception.AppError) {
         throw new Exception.AppError(e?.statusCode, e?.messages)
       }
-      throw new Exception.AppError(StatusCode.INTERNAL_SERVER_ERROR, [e?.message])
+      throw new Exception.AppError(StatusCode.INTERNAL_SERVER_ERROR, [e])
     }
   }
 }

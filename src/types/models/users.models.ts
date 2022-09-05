@@ -8,7 +8,7 @@ export namespace UsersModelsTypes {
     patients: Array<Patient>
   }
   export interface Mood extends DefaultModelsTypes.register {
-    user: Types.ObjectId
+    patient: Types.ObjectId
     mood: string
   }
 
