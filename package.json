@@ -8,6 +8,7 @@
   "scripts": {
     "build": "rimraf ./build && tsc",
     "start": "npm run build && node build/app.js",
+    "prod": "npm run build && node build/app.js",
     "dev": "cross-env NODE_ENV=DEV ts-node-dev --exit-child --transpile-only --ignore-watch node_modules src/app.ts",
     "lint": "eslint --ext js,ts src",
     "lint:fix": "eslint --ext js,ts src --fix",

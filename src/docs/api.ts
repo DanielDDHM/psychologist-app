@@ -14,6 +14,10 @@ export namespace Documentation {
         url: "http://localhost:3000/",
         description: "Local Server",
       },
+      {
+        url: `${process.env.URL_APP || ''}`,
+        description: "Local Server",
+      },
     ],
     tags: [
       { name: "Auth" },
@@ -21,6 +25,7 @@ export namespace Documentation {
       { name: "Chat" },
       { name: "Consults" },
       { name: "Diagnostics" },
+      { name: "Mood" },
       { name: "Psychologists" },
       { name: "Staff" },
       { name: "Users" },
