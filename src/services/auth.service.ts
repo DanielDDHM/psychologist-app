@@ -17,8 +17,6 @@ export namespace AuthService {
 
       const passMatch = await PasswordGenerator.compare(password, user?.password!)
 
-      console.log(passMatch)
-
       if (!passMatch || user?.email !== email) {
         throw new Exception.AppError(StatusCode.BAD_REQUEST, [DefaultMessages.Auth.NOT_PERMITED])
       }
@@ -27,7 +25,6 @@ export namespace AuthService {
 
       return { auth: true, token }
     } catch (error: any) {
-      console.log(error)
       if (error instanceof Exception.AppError) {
         throw new Exception.AppError(error?.statusCode, error?.messages)
       }
@@ -41,7 +38,6 @@ export namespace AuthService {
     try {
       return { auth: false, token: null }
     } catch (error: any) {
-      console.log(error)
       if (error instanceof Exception.AppError) {
         throw new Exception.AppError(error?.statusCode, error?.messages)
       }

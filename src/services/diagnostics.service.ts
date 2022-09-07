@@ -72,8 +72,6 @@ export namespace DiagnosticService {
         { returnOriginal: false },
       )
 
-      console.log(editedDiag)
-
       if (!editedDiag) {
         throw new Exception.AppError(StatusCode.BAD_REQUEST, ["ERROR ON EDIT"])
       }
