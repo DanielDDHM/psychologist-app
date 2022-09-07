@@ -1,5 +1,5 @@
 import { DefaultMessages, StatusCode } from "../constants"
-import { AddressGenerator, Exception, FileHelper } from "../helpers"
+import { AddressGenerator, Exception, FileHelper, PasswordGenerator } from "../helpers"
 import { User } from "../models"
 import { DefaultTypes, UsersTypes } from "../types"
 import {
@@ -52,7 +52,7 @@ export namespace UsersService {
       const userCreated = await User.create({
         name,
         email,
-        password,
+        password: await PasswordGenerator.crypt(password, 5),
         photo: await FileHelper.uploadFile({ file: photo ? photo : "", type: "photo" }).then(
           res => res.fileLink,
         ),
@@ -84,7 +84,7 @@ export namespace UsersService {
         {
           name,
           email,
-          password,
+          password: await PasswordGenerator.crypt(password, 5),
           photo: await FileHelper.uploadFile({ file: photo ? photo : "", type: "photo" }).then(
             res => res.fileLink,
           ),

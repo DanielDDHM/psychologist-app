@@ -1,15 +1,20 @@
 import { Router } from "express"
 import { UserController } from "../controller"
+import { AuthMiddleware } from "../middleware"
+import { DefaultTypes } from "../types"
 
 const router = Router()
 
+const { checkAuth, checkRole, checkToken } = AuthMiddleware
+const { ADMIN, USER } = DefaultTypes.UserTypes
+
 router
-  .get("/:id?", UserController.get)
+  .get("/:id?", checkToken, checkRole, checkAuth(USER), UserController.get)
   .post("/", UserController.create)
-  .put("/:id", UserController.update)
-  .patch("/confirm/:id", UserController.confirm)
-  .patch("/active/:id", UserController.activate)
-  .patch("/adminify", UserController.makeAdmin)
-  .delete("/:id", UserController.destroy)
+  .put("/:id", checkToken, checkRole, checkAuth(USER), UserController.update)
+  .patch("/confirm/:id", checkToken, checkRole, checkAuth(USER), UserController.confirm)
+  .patch("/active/:id", checkToken, checkRole, checkAuth(USER), UserController.activate)
+  .patch("/adminify", checkToken, checkRole, checkAuth(ADMIN), UserController.makeAdmin)
+  .delete("/:id", checkToken, checkRole, checkAuth(ADMIN), UserController.destroy)
 
 export default router

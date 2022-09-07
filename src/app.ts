@@ -10,6 +10,10 @@ import { Documentation } from "./docs/api"
 import { createServer } from "http"
 import * as WebSocket from "socket.io"
 
+const DB_URL = DATABASE_URL
+  ? DATABASE_URL
+  : "mongodb+srv://admin:admin@cluster0.pmai4kp.mongodb.net/psy-app-prod?retryWrites=true&w=majority"
+
 //APP
 const app = express()
 
@@ -29,9 +33,9 @@ app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(Documentation.Api))
 
 export const start = async () => {
   await mongoose
-    .connect(DATABASE_URL!)
+    .connect(String(DB_URL)!)
     .then(() => {
-      console.log(`APP DB CONECTED: ${DATABASE_URL}`)
+      console.log(`APP DB CONECTED: ${DB_URL}`)
 
       const serv = createServer(app)
       const ws = new WebSocket.Server(serv)

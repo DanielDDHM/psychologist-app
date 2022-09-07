@@ -2,7 +2,7 @@ import bcrypt from "bcryptjs"
 import { DefaultMessages, StatusCode } from "../constants"
 import { Exception } from "./exception"
 export namespace PasswordGenerator {
-  export const crypt = async (pass: string, salt: string) => {
+  export const crypt = async (pass: string, salt: number) => {
     try {
       const encryptPass = await bcrypt.hash(pass, salt)
 
