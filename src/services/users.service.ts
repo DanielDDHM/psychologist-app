@@ -1,5 +1,5 @@
 import { DefaultMessages, StatusCode } from "../constants"
-import { AddressGenerator, Exception, FileHelper, PasswordGenerator } from "../helpers"
+import { AddressGenerator, Exception, PasswordGenerator } from "../helpers"
 import { User } from "../models"
 import { DefaultTypes, UsersTypes } from "../types"
 import {
@@ -53,9 +53,9 @@ export namespace UsersService {
         name,
         email,
         password: await PasswordGenerator.crypt(password, 5),
-        photo: await FileHelper.uploadFile({ file: photo ? photo : "", type: "photo" }).then(
-          res => res.fileLink,
-        ),
+        photo: photo, // If Have all config of aws s3 include change to this await FileHelper.uploadFile({ file: photo ? photo : "", type: "photo" }).then(
+         // res => res.fileLink,
+        //)
         birthdate,
         phone,
         address: newAddress,
@@ -67,6 +67,7 @@ export namespace UsersService {
 
       return userCreated
     } catch (e: any) {
+      console.log(e)
       if (e instanceof Exception.AppError) {
         throw new Exception.AppError(e?.statusCode, e?.messages)
       }
@@ -85,9 +86,9 @@ export namespace UsersService {
           name,
           email,
           password: await PasswordGenerator.crypt(password, 5),
-          photo: await FileHelper.uploadFile({ file: photo ? photo : "", type: "photo" }).then(
-            res => res.fileLink,
-          ),
+          photo: photo, // If Have all config of aws s3 include change to this await FileHelper.uploadFile({ file: photo ? photo : "", type: "photo" }).then(
+            // res => res.fileLink,
+           //)
           phone,
           birthdate,
           role,
