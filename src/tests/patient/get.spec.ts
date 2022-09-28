@@ -13,7 +13,7 @@ describe("[GET PATIENT]", () => {
   })
 
   it("GET BY ID", async () => {
-    const pat = await PatientService.get({ id: "62f439f03453db77afc332ba" })
+    const pat = await PatientService.get({ id: "6334a9939b573e6914bc19b0" })
     expect(pat).toHaveProperty("patients")
   })
 })

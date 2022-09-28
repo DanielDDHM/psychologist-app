@@ -67,7 +67,6 @@ export namespace UsersService {
 
       return userCreated
     } catch (e: any) {
-      console.log(e)
       if (e instanceof Exception.AppError) {
         throw new Exception.AppError(e?.statusCode, e?.messages)
       }

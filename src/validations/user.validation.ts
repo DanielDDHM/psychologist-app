@@ -16,7 +16,6 @@ export const createUserValidation = z.object({
     streetNumber: z
       .number()
       .nonnegative({ message: "NON_NEGATIVE" })
-      .min(2, { message: "NON_EMPTY" }),
   }),
 })
 
@@ -34,6 +33,5 @@ export const updateUserValidation = z.object({
     streetNumber: z
       .number()
       .nonnegative({ message: "NON_NEGATIVE" })
-      .min(2, { message: "NON_EMPTY" }),
   }),
 })

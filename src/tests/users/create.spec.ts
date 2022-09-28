@@ -17,7 +17,7 @@ describe("[CREATE USERS]", () => {
       phone: "719912341234",
       birthdate: "04/05/1997",
       address: {
-        zipCode: "41310355",
+        zipCode: String(Math.floor(Math.random() * 100000000)),
         streetNumber: Math.floor(Math.random() * 10) + 1,
       },
     })
@@ -34,7 +34,7 @@ describe("[CREATE USERS]", () => {
         phone: "719912341234",
         birthdate: "04/05/1997",
         address: {
-          zipCode: "41310355",
+          zipCode: String(Math.floor(Math.random() * 100000000)),
           streetNumber: Math.floor(Math.random() * 10) + 1,
         },
       })

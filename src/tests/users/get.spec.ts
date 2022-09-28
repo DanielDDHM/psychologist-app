@@ -13,7 +13,7 @@ describe("[GET USERS]", () => {
   })
 
   it("GET BY ID", async () => {
-    const users = await UsersService.get({ id: "62f3df82ec8f2dfeb246b662" })
+    const users = await UsersService.get({ id: "6334a703f82e05d938b1daf1" })
     expect(users).toHaveProperty("users")
   })
 })

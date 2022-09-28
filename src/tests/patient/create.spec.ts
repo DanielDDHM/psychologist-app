@@ -12,7 +12,7 @@ describe("[CREATE PATIENT]", () => {
     try {
       const pat = await PatientService.register({
         user: String(await TestHelpers.getRandomUser()),
-        psychologist: "62f4378e3453db77afc332b1",
+        psychologist: "6334a8667cdcde60fc4afacc",
       })
       expect(pat).toHaveProperty("_id")
     } catch (error: any) {
